@@ -1,38 +1,16 @@
-# Vehicle Insurance Management in ServiceNow
+## Functional Scope
 
-## Project Description
-The Vehicle Insurance Management System is designed to automate the process of managing vehicle insurance policies within an organization. It helps users track insurance policies, claims, documents, and expiry notifications efficiently.
+The Vehicle Insurance Management System is designed to automate and streamline the management of vehicle insurance policies within an organization.
 
-## Features
-- Policy Management
-- Claims Handling
-- Document Management
-- Notifications and Alerts
-- Reporting and Analytics
-- User-Friendly Interface
+The system allows users to:
 
-## Modules
-1. Vehicle Registration
-2. Insurance Policy Management
-3. Claims Management
-4. Document Upload
-5. Notifications and Alerts
+* Create and manage vehicle insurance policies
+* Track policy start and expiry dates
+* Submit insurance claims
+* Upload and manage policy documents
+* Receive automated notifications for policy expiry and renewal
+* Generate PDF documents for insurance records
+* Implement approval workflows for claims
+* Manage renewal of expired policies
 
-## Technologies Used
-- ServiceNow Platform
-- JavaScript
-- HTML
-- CSS
-
-## Project Workflow
-1. User registers vehicle details.
-2. Admin creates or updates insurance policies.
-3. Users can submit claims.
-4. System sends notifications for policy expiry.
-5. Admin can view reports and analytics.
-
-## Screenshots
-(Add screenshots of forms, dashboard, and tables here)
-
-## Conclusion
-This project simplifies the management of vehicle insurance by providing a centralized and automated system for policy tracking, claims processing, and document management.
+This system reduces manual work, improves efficiency, and ensures better tracking of insurance activities.
