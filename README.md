@@ -26,3 +26,6 @@ When a policy record is saved, the system automatically generates a PDF document
 
 ### Automation 3: Renewal Expiry Auto Population
 When a renewal request is created, the system automatically calculates the new expiry date based on the renewal start date.
+## Innovation
+
+To improve the system functionality, an automated email reminder feature can be implemented. This feature will automatically notify users before their vehicle insurance policy expires so that they can renew the policy on time.
