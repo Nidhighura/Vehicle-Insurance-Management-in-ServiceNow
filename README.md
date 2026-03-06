@@ -1,4 +1,5 @@
-# Phase 1: 
+# Phase 1: Requirement Analysis & Planning
+
 ## Business Objectives 
 
 The main objective of implementing Vehicle Insurance Management in ServiceNow is to make the vehicle insurance process digital and automated. This will help the organization manage insurance requests more easily and efficiently.
@@ -32,6 +33,8 @@ Stakeholder Mapping – Vehicle Insurance Management
 The Vehicle Insurance Management solution implemented in ServiceNow involves several key stakeholders who play important roles in the insurance request and management process. Each stakeholder has specific responsibilities, expectations, and benefits from the automation of the system.
 
 <img width="1442" height="1339" alt="image" src="https://github.com/user-attachments/assets/3e555663-20cc-4561-9dbc-a11a5f2a171f" />
+
+
 ## Execution Roadmap
 
 The implementation of the Vehicle Insurance Management solution in ServiceNow will follow a structured roadmap divided into key milestones to ensure smooth development, testing, and deployment. The roadmap includes catalog creation, form configuration, approval workflow integration, testing, and final deployment.
@@ -50,6 +53,9 @@ During the testing phase, the complete lifecycle of insurance requests will be v
 
 Milestone 5: Deployment
 The final milestone involves deploying the vehicle insurance management solution into the production environment. A deployment checklist will be finalized, and workflows along with catalog items will be migrated to production. After deployment, system performance and user feedback will be monitored. Training sessions will be conducted for users and processing teams, and proper support and maintenance processes will be established to ensure smooth system operation.
+
+# Phase 2: Backend Development & Configurations
+
 ## Data Architecture
 
   1. New Insurance Data Table
@@ -395,6 +401,16 @@ Save and test the UI Policy on the Claims form.
 This configuration ensures that the rejection reason is captured whenever a claim is rejected, improving transparency and record accuracy.
 
 
+# Phase 3: UI/UX Development & Customization
+
+
+
+# Phase 4: Data Migration& Security Controls
+
+
+# Phase 5: Deployment, Documentation & Final Presentation
+
+
 
 ## Innovation
 
@@ -405,3 +421,9 @@ The system workflow is designed in a clear and structured way so that users can 
 ## Scalability & Future Plan
 
 The system is designed to be scalable so that additional features can be added in the future. In upcoming updates, features such as advanced reporting, AI-based claim analysis, and integration with external insurance databases can be implemented to enhance the overall functionality of the system.
+
+
+# Phase 6: QA & UAT Testing Results
+
+
+# Phase 7: Conclusion
