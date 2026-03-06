@@ -329,11 +329,69 @@ When a renewal request is created, the system automatically calculates the new e
 
 ## Business Rules 
 
-In this project, Business Rules are implemented to automate key processes, maintain data integrity, and ensure compliance within the Vehicle Insurance Management System. Business Rules run on the server side and are triggered automatically whenever a record is inserted, updated, or deleted in the system.
+Business Rules are implemented in the Vehicle Insurance Management System to automate system behavior, enforce business logic, and maintain data consistency. These rules run on the server side whenever a record is created, updated, or modified. By using Business Rules, the system ensures that insurance policies and claim records are processed automatically without requiring manual intervention.
 
-Several important Business Rules are used in this project. These include automatically setting the insurance policy expiry date based on the policy start date, sending reminders to users for upcoming policy renewals, validating claim details before submission, automatically assigning claim approvals to the appropriate authority, and updating the status of policies and claims based on system actions.
+Subtask 1: UI Policy Configuration on Claims Table for Section Visibility
 
-By implementing these Business Rules, the system reduces manual effort, minimizes errors, and ensures that all data related to vehicle insurance policies and claims remains accurate and consistent across the platform.
+In this subtask, a UI Policy is configured on the Claims Data table to control the visibility of form sections based on the approval status selected by the user.
+
+Scenario:
+If the Approval Status is set to "Approved", the Claim Settlement Details section should become visible so that the settlement information can be entered.
+
+Implementation Steps:
+
+Navigate to UI Policies in ServiceNow.
+
+Click New to create a new UI Policy.
+
+Select the Table as Claims Data.
+
+Provide an appropriate Short Description.
+
+Set the Condition as Approval Status is Approved.
+
+Save the UI Policy.
+
+In the UI Policy Actions related list, create a new action.
+
+Select the Claim Settlement Details section.
+
+Set Visible = True.
+
+Save and test the UI Policy on the Claims form.
+
+This configuration ensures that settlement details are only visible when the claim has been approved.
+
+Subtask 2: UI Policy Configuration on Claims Table for Fields Visibility
+
+This subtask focuses on controlling the visibility of specific fields on the Claims form based on user selections.
+
+Scenario:
+If the Approval Status is set to "Rejected", the Reason for Rejection field should appear so that the admin can provide a valid reason for rejecting the claim.
+
+Implementation Steps:
+
+Navigate to UI Policies in ServiceNow.
+
+Click New to create a new UI Policy.
+
+Select the Table as Claims Data.
+
+Provide an appropriate Short Description.
+
+Set the Condition as Approval Status is Rejected.
+
+Save the UI Policy.
+
+In the UI Policy Actions related list, click New.
+
+Select the Reason for Rejection field.
+
+Set Visible = True.
+
+Save and test the UI Policy on the Claims form.
+
+This configuration ensures that the rejection reason is captured whenever a claim is rejected, improving transparency and record accuracy.
 
 
 
