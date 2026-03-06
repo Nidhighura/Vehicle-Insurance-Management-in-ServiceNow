@@ -29,3 +29,6 @@ When a renewal request is created, the system automatically calculates the new e
 ## Innovation
 
 To improve the system functionality, an automated email reminder feature can be implemented. This feature will automatically notify users before their vehicle insurance policy expires so that they can renew the policy on time.
+## Explanation Clarity
+
+The system workflow is designed in a clear and structured way so that users can easily understand how insurance policies are created, managed, and renewed. Each automation process such as expiry calculation, PDF generation, and renewal processing is implemented with clear business logic to ensure smooth system operation.
