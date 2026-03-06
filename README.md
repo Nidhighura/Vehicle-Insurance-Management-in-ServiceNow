@@ -14,3 +14,15 @@ The system allows users to:
 * Manage renewal of expired policies
 
 This system reduces manual work, improves efficiency, and ensures better tracking of insurance activities.
+This system reduces manual work, improves efficiency, and ensures better tracking of insurance activities.
+
+## Automation Logics
+
+### Automation 1: Policy Expiry Auto Calculation
+When a new insurance policy is created, the system automatically calculates the policy expiry date based on the policy start date.
+
+### Automation 2: Automatic PDF Generation
+When a policy record is saved, the system automatically generates a PDF document containing the policy details and attaches it to the record.
+
+### Automation 3: Renewal Expiry Auto Population
+When a renewal request is created, the system automatically calculates the new expiry date based on the renewal start date.
