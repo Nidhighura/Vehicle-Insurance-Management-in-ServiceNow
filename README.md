@@ -20,15 +20,48 @@ This system reduces manual work, improves efficiency, and ensures better trackin
 
 ### Automation 1: Policy Expiry Auto Calculation
 When a new insurance policy is created, the system automatically calculates the policy expiry date based on the policy start date.
+```javascript
+(function executeRule(current, previous) {
+
+    if (current.start_date) {
+        var expiry = new GlideDateTime(current.start_date);
+        expiry.addYears(1);
+        current.expiry_date = expiry;
+    }
+
+})(current, previous);
+```
 
 ### Automation 2: Automatic PDF Generation
 When a policy record is saved, the system automatically generates a PDF document containing the policy details and attaches it to the record.
+```javascript
+(function executeRule(current, previous) {
+
+    var pdf = new GlidePDFGenerationAPI();
+    pdf.createPDF(current.sys_id, "insurance_policy_pdf");
+
+})(current, previous);
+```
 
 ### Automation 3: Renewal Expiry Auto Population
 When a renewal request is created, the system automatically calculates the new expiry date based on the renewal start date.
+```javascript
+(function executeRule(current, previous) {
+
+    if (current.renewal_start_date) {
+        var newExpiry = new GlideDateTime(current.renewal_start_date);
+        newExpiry.addYears(1);
+        current.new_expiry_date = newExpiry;
+    }
+
+})(current, previous);
+```
 ## Innovation
 
 To improve the system functionality, an automated email reminder feature can be implemented. This feature will automatically notify users before their vehicle insurance policy expires so that they can renew the policy on time.
 ## Explanation Clarity
 
 The system workflow is designed in a clear and structured way so that users can easily understand how insurance policies are created, managed, and renewed. Each automation process such as expiry calculation, PDF generation, and renewal processing is implemented with clear business logic to ensure smooth system operation.
+## Scalability & Future Plan
+
+The system is designed to be scalable so that additional features can be added in the future. In upcoming updates, features such as advanced reporting, AI-based claim analysis, and integration with external insurance databases can be implemented to enhance the overall functionality of the system.
