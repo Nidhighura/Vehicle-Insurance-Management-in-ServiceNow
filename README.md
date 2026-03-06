@@ -1,3 +1,13 @@
+## Business Objectives 
+
+The main objective of implementing Vehicle Insurance Management in ServiceNow is to make the vehicle insurance process digital and automated. This will help the organization manage insurance requests more easily and efficiently.
+
+The system will reduce manual work by allowing users to submit insurance requests online instead of using paper or manual processes. It will also help in processing requests faster and making approvals and renewals quicker.
+
+All insurance records will be stored in one centralized system, making it easier to track and manage them. Standardized workflows will also ensure that all required documents and procedures are followed properly.
+
+Overall, this system will improve transparency, reduce errors, save time, and ensure that all vehicle insurance processes follow the required legal and organizational policies. 🚗📄
+
 ## Functional Scope
 
 The Vehicle Insurance Management System is designed to automate and streamline the management of vehicle insurance policies within an organization.
@@ -15,6 +25,12 @@ The system allows users to:
 
 This system reduces manual work, improves efficiency, and ensures better tracking of insurance activities.
 This system reduces manual work, improves efficiency, and ensures better tracking of insurance activities.
+
+Stakeholder Mapping – Vehicle Insurance Management
+
+The Vehicle Insurance Management solution implemented in ServiceNow involves several key stakeholders who play important roles in the insurance request and management process. Each stakeholder has specific responsibilities, expectations, and benefits from the automation of the system.
+
+
 
 ## Automation Logics
 
