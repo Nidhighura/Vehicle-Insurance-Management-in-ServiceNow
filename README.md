@@ -407,6 +407,53 @@ This configuration ensures that the rejection reason is captured whenever a clai
 
 # Phase 4: Data Migration& Security Controls
 
+## Data Handling
+In this phase, all customer-related data such as New Client registrations, Policy Renewals, and Insurance Claims are stored in their respective database tables. This ensures proper organization and structured management of information within the Vehicle Insurance Management System.
+
+To automate the data handling process, Process Automation techniques are implemented using ServiceNow Catalog Items. The variables entered by users through the catalog forms are automatically captured and mapped to the corresponding custom tables: New Clients Data, Renewal Data, and Claims Data. This approach helps in maintaining accurate records and simplifies data tracking and management.
+
+Subtask 1: Creation of Flow using Flow Designer Tool
+
+In this subtask, a Flow is created using the ServiceNow Flow Designer to automate the process of capturing user input from catalog items and storing it in the appropriate custom tables.
+
+The Flow Designer helps automate backend processes without requiring complex scripting. It connects catalog item submissions with database operations, ensuring that all submitted data is properly recorded in the system.
+<img width="975" height="404" alt="image" src="https://github.com/user-attachments/assets/6257e43b-f89f-4228-99d8-31c8710ba37a" />
+<img width="975" height="567" alt="image" src="https://github.com/user-attachments/assets/9e0ffacd-e08d-41d1-9a23-e63584f91efd" />
+
+
+
+Subtask 2: Configuring Trigger Conditions
+
+The trigger condition defines when the flow should start executing. In this project, the flow is triggered whenever a user submits a catalog item related to vehicle insurance services.
+
+For example:
+
+When a user submits a New Insurance Request
+
+When a user submits a Policy Renewal Request
+
+When a user submits a Claim Request
+
+Once the catalog item is submitted, the flow is automatically triggered to process the captured information.
+<img width="1600" height="592" alt="image" src="https://github.com/user-attachments/assets/fc9d29ba-16fc-4cf5-8835-ff03d7a34f6f" />
+
+
+Subtask 3: Configuring Actions
+
+After the trigger condition is met, the system performs specific actions within the flow. These actions are responsible for storing the submitted data in the respective custom tables.
+
+The actions configured in the flow include:
+
+Creating a new record in the appropriate table (New Clients Data, Renewal Data, or Claims Data).
+
+Mapping catalog variables to table fields.
+
+Saving customer details, policy information, and claim details into the database.
+
+This automated process ensures that all data entered by users is accurately recorded, reducing manual work and improving overall system efficiency.
+<img width="1289" height="725" alt="image" src="https://github.com/user-attachments/assets/bdf6507a-ae8b-4165-9333-c24a7e1ec9db" />
+<img width="1284" height="651" alt="image" src="https://github.com/user-attachments/assets/c2c5a465-60c7-434b-8e32-8c380ddc127e" />
+
 
 # Phase 5: Deployment, Documentation & Final Presentation
 
