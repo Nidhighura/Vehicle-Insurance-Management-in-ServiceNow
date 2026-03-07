@@ -785,9 +785,135 @@ Test changes in a development environment before deployment.
 
 Use impersonation to test user access and permissions.
 
+## Adherence to Timelines
+
+Adhering to project timelines is essential for the successful implementation of the Vehicle Insurance Management System. Each phase of the project is carefully planned and executed within defined schedules to ensure smooth development, testing, and deployment. Proper coordination, regular reviews, and progress tracking help maintain project efficiency and avoid delays.
+
+### 1. Requirement Gathering Phase
+
+In this phase, all functional and technical requirements related to the Vehicle Insurance Management System are collected and finalized within the agreed timeline.
+
+Key activities include:
+
+Identifying system requirements for vehicle registration, policy management, and claims processing.
+
+Conducting review sessions with stakeholders to validate requirements.
+
+Documenting all requirements clearly to avoid rework during later phases.
+
+### 2. Design & Configuration Phase
+
+During this phase, the system design and configuration are completed according to predefined milestones.
+
+Key activities include:
+
+Designing forms for Vehicle Details, Policy Information, Claims, and Payment Data.
+
+Configuring ServiceNow components such as tables, UI policies, catalog items, and workflows.
+
+Implementing workflows for policy issuance, renewal processing, and expiry reminders within the planned sprint duration.
+
+### 3. Development & Scripting Phase
+
+In this phase, automation and system logic are developed using ServiceNow scripting and configuration tools.
+
+Key activities include:
+
+Implementing Business Rules, Client Scripts, and Flow Designer automations.
+
+Following coding standards to ensure maintainable and efficient code.
+
+Performing unit testing immediately after implementing each automation component to detect issues early.
+
+### 4. Testing Phase
+
+The testing phase ensures that the system functions correctly before deployment.
+
+Key activities include:
+
+Executing functional test cases to verify system features.
+
+Conducting User Acceptance Testing (UAT) to validate system behavior from a user perspective.
+
+Logging and resolving defects within the defined Service Level Agreement (SLA) to maintain project timelines.
+
+### 5. Deployment Phase
+
+This phase involves moving the completed solution to the production environment.
+
+Key activities include:
+
+Raising change requests for deployment within the scheduled release window.
+
+Performing pre-deployment validation to ensure readiness.
+
+Conducting post-deployment smoke testing to confirm that the system works as expected.
+
+### 6. Communication & Tracking
+
+Effective communication and monitoring help ensure that the project remains on schedule.
+
+Key activities include:
+
+Conducting regular project stand-up meetings and progress reviews.
+
+Tracking tasks and milestones using tools such as project trackers, Agile boards, or spreadsheets.
+
+Updating the project status regularly to reflect progress against deadlines.
+
+### 7. Risk & Mitigation
+
+Potential risks that may affect the project timeline are identified early and managed effectively.
+
+Examples include:
+
+Delays in requirement approvals
+
+Testing bottlenecks
+
+Configuration or integration issues
+
+Mitigation strategies such as buffer timelines, parallel task execution, and early stakeholder involvement help keep the project on track.
+
+### 8. Documentation Deliverables
+
+Proper documentation is maintained throughout the project lifecycle to ensure smooth knowledge transfer and system maintenance.
+
+Deliverables include:
+
+Technical documentation describing system configuration and automation.
+
+Troubleshooting guides for resolving common issues.
+
+User training materials and guides provided before the system goes live.
+
 ## Innovation
 
 To improve the system functionality, an automated email reminder feature can be implemented. This feature will automatically notify users before their vehicle insurance policy expires so that they can renew the policy on time.
+
+## Document Functional Overview
+
+The Vehicle Insurance Management System is designed to streamline and automate the management of vehicle insurance policies, renewals, and claims within the organization. The system provides a centralized platform that improves operational efficiency, enhances customer experience, and ensures accurate data handling.
+
+Key functional benefits of the system include:
+
+#### 1. Reduced Manual Effort
+
+The system automates various processes such as policy registration, policy renewal, claim submission, and approval workflows. Automation through Business Rules, Flow Designer, and scheduled jobs significantly reduces manual work and improves operational efficiency.
+
+#### 2. Improved Customer Experience
+
+Customers can easily submit new insurance requests, renewal requests, and claim applications through the self-service interface. Automated notifications and reminders keep users informed about important events such as policy expiry and claim status updates, providing a smooth and proactive user experience.
+
+#### 3. Increased Data Accuracy
+
+Data validation rules, mandatory fields, and restricted inputs ensure that all required information is captured correctly. This reduces the chances of incomplete or incorrect data being stored in the system and helps maintain data integrity.
+
+#### 4. Enhanced Decision-Making
+
+The system provides dashboards and reports that allow administrators to analyze policy data, claim records, and customer activity. These insights help management make informed decisions and monitor the overall performance of the insurance management process.
+
+
 
 ## Explanation Clarity
 
