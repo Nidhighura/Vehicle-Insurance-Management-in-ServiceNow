@@ -454,6 +454,72 @@ This automated process ensures that all data entered by users is accurately reco
 <img width="1289" height="725" alt="image" src="https://github.com/user-attachments/assets/bdf6507a-ae8b-4165-9333-c24a7e1ec9db" />
 <img width="1284" height="651" alt="image" src="https://github.com/user-attachments/assets/c2c5a465-60c7-434b-8e32-8c380ddc127e" />
 
+## Access Control
+
+Access control is implemented in the Vehicle Insurance Management System to ensure data security and protect sensitive information. Users or clients are allowed to submit requests such as New Insurance Registration, Policy Renewal, and Claims through the catalog interface. However, they are not granted direct access to the underlying database tables.
+
+To enforce this restriction and maintain secure data handling, Access Control Rules (ACLs) are configured within ServiceNow. These rules control the read, write, create, and delete permissions for records and fields based on the roles assigned to users. This ensures that only authorized users, such as administrators, can view or modify the data stored in the database tables.
+
+Subtask 1: User Creation
+
+In this subtask, user accounts are created in the ServiceNow system to allow individuals to access the application based on their responsibilities.
+
+Steps:
+
+Navigate to User Administration → Users.
+
+Click on New to create a new user.
+
+Enter the required details such as User Name, Email ID, and Department.
+
+Save the user record.
+
+Assign appropriate roles to the user based on their access level.
+
+This step ensures that every person accessing the system has a unique user account.
+
+Subtask 2: Role Creation
+
+Roles are created to define different levels of access within the system. Each role determines what actions a user can perform.
+
+Steps:
+
+Navigate to User Administration → Roles.
+
+Click New to create a new role.
+
+Provide a Role Name and description.
+
+Save the role.
+
+Assign the role to users who require that level of access.
+
+For example:
+
+Admin Role – Full access to tables and records
+
+Client/User Role – Access only to submit catalog requests
+
+Subtask 3: ACL Creation
+
+Access Control Rules (ACLs) are configured to restrict or grant permissions to specific tables, records, or fields.
+
+Steps:
+
+Navigate to System Security → Access Control (ACL).
+
+Click New to create a new ACL rule.
+
+Select the Table Name (e.g., Claims Data, Renewal Data, New Clients Data).
+
+Define the Operation such as Read, Write, Create, or Delete.
+
+Specify the Roles that are allowed to perform the operation.
+
+Save and test the ACL rule.
+
+By implementing ACLs, the system ensures that only authorized users can access sensitive insurance data, while regular users can interact with the system only through the catalog interface.
+
 
 # Phase 5: Deployment, Documentation & Final Presentation
 
@@ -499,5 +565,7 @@ Reminder’s Email Testing is performed to ensure that automatic reminder emails
 
 <img width="1600" height="686" alt="1000197920" src="https://github.com/user-attachments/assets/3840a84f-1cc1-48c6-8658-86cfbaec49e1" />
 <img width="1319" height="676" alt="1000197921" src="https://github.com/user-attachments/assets/30caad39-0f4a-48b7-9453-d4d58c78df6b" />
+
 # Phase 7: Conclusion
+
 The Vehicle Insurance Management System built on ServiceNow simplifies the process of managing vehicle insurance policies, renewals, and claims. It allows users to register vehicles, view policy details, track expiry dates, and receive automatic renewal reminders. The system improves transparency, reduces manual work, and helps manage insurance operations more efficiently through automated workflows and real-time reports.
