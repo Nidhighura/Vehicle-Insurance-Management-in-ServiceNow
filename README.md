@@ -622,19 +622,12 @@ In this activity, a dashboard is created to display reports related to insurance
 Steps:
 
 Navigate to the ServiceNow Home Page.
-
 Click on the All Menu.
-
 Type Dashboard in the search bar.
-
 Navigate to Usage and Governance → Dashboards.
-
 Click on the New button to create a new dashboard.
-
 Provide the Name as Insurance Data Reports.
-
 Save the dashboard.
-
 This dashboard will be used to display multiple reports related to the Vehicle Insurance Management System.
 
 ### Reports Creation in ServiceNow
@@ -671,6 +664,126 @@ Save and Run the Report.
 
 After generating the report, it can be added to the previously created dashboard Insurance Data Reports so that administrators can easily view policy data in a graphical format.
 
+## Troubleshooting
+
+
+During the development and implementation of the Vehicle Insurance Management System in ServiceNow, certain issues may occur related to forms, automation, notifications, or system performance. Troubleshooting helps identify and resolve these issues to ensure the system functions smoothly and efficiently.
+
+Below are some common problems encountered during the project along with their possible solutions.
+
+### 1. Form & Field Issues
+
+Sometimes fields may not appear on the form or may not behave as expected.
+
+##### Possible Causes:
+
+Incorrect field configuration
+
+UI Policy conditions not applied correctly
+
+Fields not added to the form layout
+
+##### Solution:
+
+Verify the Form Layout configuration.
+
+Check UI Policies and Client Scripts affecting the field.
+
+Ensure the field is added to the correct section of the form.
+
+### 2. Business Rule / Workflow Errors
+
+Automation scripts such as Business Rules or Flows may fail to execute correctly.
+
+##### Possible Causes:
+
+Incorrect script logic
+
+Business rule conditions not met
+
+Flow Designer trigger not configured properly
+
+##### Solution:
+
+Check the Business Rule script syntax.
+
+Verify the trigger conditions in Flow Designer.
+
+Use System Logs to identify errors.
+
+### 3. Notification Issues
+
+Sometimes email notifications may not be triggered or delivered to users.
+
+##### Possible Causes:
+
+Incorrect event configuration
+
+Notification conditions not satisfied
+
+Email settings not configured properly
+
+##### Solution:
+
+Verify the Event Registry configuration.
+
+Ensure the notification is linked to the correct event.
+
+Check the email logs to confirm whether the notification was sent.
+
+### 4. Data & Security Issues
+
+Users may face access problems or may not be able to view records.
+
+##### Possible Causes:
+
+Access Control Rules (ACLs) restricting permissions
+
+Incorrect role assignment
+
+Field-level security restrictions
+
+##### Solution:
+
+Verify ACL configurations.
+
+Ensure the user has the correct roles assigned.
+
+Test permissions using impersonation.
+
+### 5. Performance / UI Issues
+
+Slow loading forms or interface problems may affect user experience.
+
+##### Possible Causes:
+
+Too many client scripts or UI policies
+
+Large data records
+
+Network or browser-related issues
+
+##### Solution:
+
+Optimize client scripts and UI policies.
+
+Reduce unnecessary fields or scripts on the form.
+
+Clear browser cache and check system performance.
+
+### 6. Common Debugging Tips
+
+To resolve issues effectively, developers can use the following debugging techniques:
+
+Check System Logs for error messages.
+
+Use Script Debugger to analyze script execution.
+
+Verify Flow Designer execution logs.
+
+Test changes in a development environment before deployment.
+
+Use impersonation to test user access and permissions.
 
 ## Innovation
 
