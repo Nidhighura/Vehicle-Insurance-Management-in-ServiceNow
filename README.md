@@ -39,16 +39,16 @@ The Vehicle Insurance Management solution implemented in ServiceNow involves sev
 
 The implementation of the Vehicle Insurance Management solution in ServiceNow will follow a structured roadmap divided into key milestones to ensure smooth development, testing, and deployment. The roadmap includes catalog creation, form configuration, approval workflow integration, testing, and final deployment.
 
-* Milestone 1: Catalog Creation
+#### Catalog Creation
 The first milestone focuses on creating a structured and user-friendly service catalog for vehicle insurance services. This includes identifying different insurance request types such as new policy requests, policy renewals, and claims. Appropriate catalog categories and service items will be defined, and catalog items will be created with clear titles and descriptions. Collaboration with fleet administrators and approval teams will ensure the accuracy of information and alignment with existing ITSM service structures.
 
-* Milestone 2: Form Setup
+#### Form Setup
 In this stage, dynamic forms will be designed to collect all necessary insurance request details. Catalog item forms will be built using variables to capture information such as vehicle details, policy type, insurer information, and policy expiry date. Dynamic field visibility will be implemented based on the type of request, and mandatory fields will be configured to ensure complete and accurate submissions. These forms will also align with automation processes and document validation requirements.
 
-* Milestone 3: Approval Integration
+#### Approval Integration
 This milestone focuses on automating approval workflows for insurance-related actions. Approval chains will be defined, such as approvals from team managers or designated approval officers. The workflows will be configured using Flow Designer in ServiceNow. Additionally, audit logs and automated email notifications will be enabled to maintain transparency and proper tracking of approval activities.
 
-* Milestone 4: Testing
+#### Testing
 During the testing phase, the complete lifecycle of insurance requests will be validated. Unit testing will be performed for each catalog item, and end-to-end scenarios such as new policy requests, renewals, and claims will be simulated. Approvals, task creation, notifications, and document handling will be verified. User Acceptance Testing (UAT) will be conducted with stakeholders, and any identified defects will be documented and resolved.
 
 * Milestone 5: Deployment
@@ -58,9 +58,9 @@ The final milestone involves deploying the vehicle insurance management solution
 
 ## Data Architecture
 
-  1. New Insurance Data Table
+###  1. New Insurance Data Table
     
-     ### Activity 1: Creation of Table
+     ####  Creation of Table
         · Navigate to: System Definition > Tables.
         
         · Click New to create a new table.
@@ -75,7 +75,8 @@ The final milestone involves deploying the vehicle insurance management solution
         <img width="975" height="383" alt="image" src="https://github.com/user-attachments/assets/16bfadab-273f-4749-b5f7-eeb470b437c3" />
         <img width="975" height="425" alt="image" src="https://github.com/user-attachments/assets/415d52f4-32dd-4ce3-97ba-7836cf8655b0" />
         <img width="1600" height="371" alt="image" src="https://github.com/user-attachments/assets/1c07a696-abbe-40ca-b327-430ac91b8813" />
-      ###  Activity 2: Creation of fields
+        
+      ####   Creation of fields
         ·   In ServiceNow, fields are created at the table level. To create a field, you first need to identify the table where the field will reside.
         
         1.   In the Application Navigator (left-side panel), type Tables in the search bar.
@@ -102,7 +103,7 @@ The final milestone involves deploying the vehicle insurance management solution
         
         2.   You’ll now be prompted with a form where you need to define the new field. The following fields need to be filled out:
         
-      ###  Activity 3: Define Field Properties
+      ####  Define Field Properties
         Fill in the following details for your new field:
         
         1. Column Label (Field Label)
@@ -168,7 +169,7 @@ The final milestone involves deploying the vehicle insurance management solution
         <img width="1351" height="785" alt="image" src="https://github.com/user-attachments/assets/719a3297-8fef-48dc-b569-e11fec1721f4" />
         <img width="1380" height="505" alt="image" src="https://github.com/user-attachments/assets/f14de952-2da7-4dd2-b27e-7c6703df3b6e" />
         
-      ###  Activity 4:  Add the Field to a Form (Optional)
+      ####  Add the Field to a Form (Optional)
         After creating the field, you may want to add it to a form so that users can view or update it.
         
         1.   To do this, navigate to System UI > Forms in the application navigator.
@@ -209,7 +210,7 @@ The final milestone involves deploying the vehicle insurance management solution
         
         ·     Currency: Currency field with monetary values.
         
-       ### Activity 5:  Creation of Sections using Form Designer 
+       ####  Creation of Sections using Form Designer 
         Navigate to the Table/Form
         
         Go to the table where you want to add a section (Insurance clients Data).
@@ -263,8 +264,8 @@ The final milestone involves deploying the vehicle insurance management solution
         Your new section will now appear on the form
         <img width="1495" height="781" alt="image" src="https://github.com/user-attachments/assets/14b233b3-5af9-4648-bc89-f57dbfed8f44" />
 
-2. Renewal Data Table
-   Activity 1: Creation of Table
+### 2. Renewal Data Table
+  #### Creation of Table
     · Navigate to: System Definition > Tables.
     
     · Click New to create a new table.
@@ -280,8 +281,8 @@ The final milestone involves deploying the vehicle insurance management solution
    <img width="1052" height="911" alt="image" src="https://github.com/user-attachments/assets/1a8d1ceb-b4e7-4f77-b8de-1711988d776f" />
 
    
-3. Claims Data Table
-     Activity 1: Creation of Table
+### 3. Claims Data Table
+    #### Creation of Table
         · Navigate to: System Definition > Tables.        
         · Click New to create a new table.        
         · Fill in Table Information:        
@@ -296,7 +297,7 @@ The final milestone involves deploying the vehicle insurance management solution
 
 ## Automation Logics
 
-### Automation 1: Policy Expiry Auto Calculation
+### Policy Expiry Auto Calculation
 When a new insurance policy is created, the system automatically calculates the policy expiry date based on the policy start date.
 ```javascript
 (function executeRule(current, previous) {
@@ -310,7 +311,7 @@ When a new insurance policy is created, the system automatically calculates the 
 })(current, previous);
 ```
 
-### Automation 2: Automatic PDF Generation
+### Automatic PDF Generation
 When a policy record is saved, the system automatically generates a PDF document containing the policy details and attaches it to the record.
 ```javascript
 (function executeRule(current, previous) {
@@ -339,7 +340,7 @@ When a renewal request is created, the system automatically calculates the new e
 
 Business Rules are implemented in the Vehicle Insurance Management System to automate system behavior, enforce business logic, and maintain data consistency. These rules run on the server side whenever a record is created, updated, or modified. By using Business Rules, the system ensures that insurance policies and claim records are processed automatically without requiring manual intervention.
 
-#### Subtask 1: UI Policy Configuration on Claims Table for Section Visibility
+####  UI Policy Configuration on Claims Table for Section Visibility
 
 In this subtask, a UI Policy is configured on the Claims Data table to control the visibility of form sections based on the approval status selected by the user.
 
@@ -413,7 +414,7 @@ In this phase, all customer-related data such as New Client registrations, Polic
 
 To automate the data handling process, Process Automation techniques are implemented using ServiceNow Catalog Items. The variables entered by users through the catalog forms are automatically captured and mapped to the corresponding custom tables: New Clients Data, Renewal Data, and Claims Data. This approach helps in maintaining accurate records and simplifies data tracking and management.
 
-#### Subtask 1: Creation of Flow using Flow Designer Tool
+####  Creation of Flow using Flow Designer Tool
 
 In this subtask, a Flow is created using the ServiceNow Flow Designer to automate the process of capturing user input from catalog items and storing it in the appropriate custom tables.
 
@@ -423,7 +424,7 @@ The Flow Designer helps automate backend processes without requiring complex scr
 
 
 
-#### Subtask 2: Configuring Trigger Conditions
+####  Configuring Trigger Conditions
 
 The trigger condition defines when the flow should start executing. In this project, the flow is triggered whenever a user submits a catalog item related to vehicle insurance services.
 
@@ -439,7 +440,7 @@ Once the catalog item is submitted, the flow is automatically triggered to proce
 <img width="1600" height="592" alt="image" src="https://github.com/user-attachments/assets/fc9d29ba-16fc-4cf5-8835-ff03d7a34f6f" />
 
 
-#### Subtask 3: Configuring Actions
+####  Configuring Actions
 
 After the trigger condition is met, the system performs specific actions within the flow. These actions are responsible for storing the submitted data in the respective custom tables.
 
