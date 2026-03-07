@@ -39,19 +39,19 @@ The Vehicle Insurance Management solution implemented in ServiceNow involves sev
 
 The implementation of the Vehicle Insurance Management solution in ServiceNow will follow a structured roadmap divided into key milestones to ensure smooth development, testing, and deployment. The roadmap includes catalog creation, form configuration, approval workflow integration, testing, and final deployment.
 
-Milestone 1: Catalog Creation
+* Milestone 1: Catalog Creation
 The first milestone focuses on creating a structured and user-friendly service catalog for vehicle insurance services. This includes identifying different insurance request types such as new policy requests, policy renewals, and claims. Appropriate catalog categories and service items will be defined, and catalog items will be created with clear titles and descriptions. Collaboration with fleet administrators and approval teams will ensure the accuracy of information and alignment with existing ITSM service structures.
 
-Milestone 2: Form Setup
+* Milestone 2: Form Setup
 In this stage, dynamic forms will be designed to collect all necessary insurance request details. Catalog item forms will be built using variables to capture information such as vehicle details, policy type, insurer information, and policy expiry date. Dynamic field visibility will be implemented based on the type of request, and mandatory fields will be configured to ensure complete and accurate submissions. These forms will also align with automation processes and document validation requirements.
 
-Milestone 3: Approval Integration
+* Milestone 3: Approval Integration
 This milestone focuses on automating approval workflows for insurance-related actions. Approval chains will be defined, such as approvals from team managers or designated approval officers. The workflows will be configured using Flow Designer in ServiceNow. Additionally, audit logs and automated email notifications will be enabled to maintain transparency and proper tracking of approval activities.
 
-Milestone 4: Testing
+* Milestone 4: Testing
 During the testing phase, the complete lifecycle of insurance requests will be validated. Unit testing will be performed for each catalog item, and end-to-end scenarios such as new policy requests, renewals, and claims will be simulated. Approvals, task creation, notifications, and document handling will be verified. User Acceptance Testing (UAT) will be conducted with stakeholders, and any identified defects will be documented and resolved.
 
-Milestone 5: Deployment
+* Milestone 5: Deployment
 The final milestone involves deploying the vehicle insurance management solution into the production environment. A deployment checklist will be finalized, and workflows along with catalog items will be migrated to production. After deployment, system performance and user feedback will be monitored. Training sessions will be conducted for users and processing teams, and proper support and maintenance processes will be established to ensure smooth system operation.
 
 # Phase 2: Backend Development & Configurations
@@ -60,7 +60,7 @@ The final milestone involves deploying the vehicle insurance management solution
 
   1. New Insurance Data Table
     
-     Activity 1: Creation of Table
+     ### Activity 1: Creation of Table
         · Navigate to: System Definition > Tables.
         
         · Click New to create a new table.
@@ -75,7 +75,7 @@ The final milestone involves deploying the vehicle insurance management solution
         <img width="975" height="383" alt="image" src="https://github.com/user-attachments/assets/16bfadab-273f-4749-b5f7-eeb470b437c3" />
         <img width="975" height="425" alt="image" src="https://github.com/user-attachments/assets/415d52f4-32dd-4ce3-97ba-7836cf8655b0" />
         <img width="1600" height="371" alt="image" src="https://github.com/user-attachments/assets/1c07a696-abbe-40ca-b327-430ac91b8813" />
-        Activity 2: Creation of fields
+      ###  Activity 2: Creation of fields
         ·   In ServiceNow, fields are created at the table level. To create a field, you first need to identify the table where the field will reside.
         
         1.   In the Application Navigator (left-side panel), type Tables in the search bar.
@@ -102,7 +102,7 @@ The final milestone involves deploying the vehicle insurance management solution
         
         2.   You’ll now be prompted with a form where you need to define the new field. The following fields need to be filled out:
         
-        Activity 3: Define Field Properties
+      ###  Activity 3: Define Field Properties
         Fill in the following details for your new field:
         
         1. Column Label (Field Label)
@@ -167,7 +167,8 @@ The final milestone involves deploying the vehicle insurance management solution
         
         <img width="1351" height="785" alt="image" src="https://github.com/user-attachments/assets/719a3297-8fef-48dc-b569-e11fec1721f4" />
         <img width="1380" height="505" alt="image" src="https://github.com/user-attachments/assets/f14de952-2da7-4dd2-b27e-7c6703df3b6e" />
-        Activity 4:  Add the Field to a Form (Optional)
+        
+      ###  Activity 4:  Add the Field to a Form (Optional)
         After creating the field, you may want to add it to a form so that users can view or update it.
         
         1.   To do this, navigate to System UI > Forms in the application navigator.
@@ -208,7 +209,7 @@ The final milestone involves deploying the vehicle insurance management solution
         
         ·     Currency: Currency field with monetary values.
         
-        Activity 5:  Creation of Sections using Form Designer 
+       ### Activity 5:  Creation of Sections using Form Designer 
         Navigate to the Table/Form
         
         Go to the table where you want to add a section (Insurance clients Data).
@@ -338,7 +339,7 @@ When a renewal request is created, the system automatically calculates the new e
 
 Business Rules are implemented in the Vehicle Insurance Management System to automate system behavior, enforce business logic, and maintain data consistency. These rules run on the server side whenever a record is created, updated, or modified. By using Business Rules, the system ensures that insurance policies and claim records are processed automatically without requiring manual intervention.
 
-Subtask 1: UI Policy Configuration on Claims Table for Section Visibility
+#### Subtask 1: UI Policy Configuration on Claims Table for Section Visibility
 
 In this subtask, a UI Policy is configured on the Claims Data table to control the visibility of form sections based on the approval status selected by the user.
 
@@ -369,7 +370,7 @@ Save and test the UI Policy on the Claims form.
 
 This configuration ensures that settlement details are only visible when the claim has been approved.
 
-Subtask 2: UI Policy Configuration on Claims Table for Fields Visibility
+#### Subtask 2: UI Policy Configuration on Claims Table for Fields Visibility
 
 This subtask focuses on controlling the visibility of specific fields on the Claims form based on user selections.
 
@@ -412,7 +413,7 @@ In this phase, all customer-related data such as New Client registrations, Polic
 
 To automate the data handling process, Process Automation techniques are implemented using ServiceNow Catalog Items. The variables entered by users through the catalog forms are automatically captured and mapped to the corresponding custom tables: New Clients Data, Renewal Data, and Claims Data. This approach helps in maintaining accurate records and simplifies data tracking and management.
 
-Subtask 1: Creation of Flow using Flow Designer Tool
+#### Subtask 1: Creation of Flow using Flow Designer Tool
 
 In this subtask, a Flow is created using the ServiceNow Flow Designer to automate the process of capturing user input from catalog items and storing it in the appropriate custom tables.
 
@@ -422,7 +423,7 @@ The Flow Designer helps automate backend processes without requiring complex scr
 
 
 
-Subtask 2: Configuring Trigger Conditions
+#### Subtask 2: Configuring Trigger Conditions
 
 The trigger condition defines when the flow should start executing. In this project, the flow is triggered whenever a user submits a catalog item related to vehicle insurance services.
 
@@ -438,7 +439,7 @@ Once the catalog item is submitted, the flow is automatically triggered to proce
 <img width="1600" height="592" alt="image" src="https://github.com/user-attachments/assets/fc9d29ba-16fc-4cf5-8835-ff03d7a34f6f" />
 
 
-Subtask 3: Configuring Actions
+#### Subtask 3: Configuring Actions
 
 After the trigger condition is met, the system performs specific actions within the flow. These actions are responsible for storing the submitted data in the respective custom tables.
 
@@ -460,7 +461,7 @@ Access control is implemented in the Vehicle Insurance Management System to ensu
 
 To enforce this restriction and maintain secure data handling, Access Control Rules (ACLs) are configured within ServiceNow. These rules control the read, write, create, and delete permissions for records and fields based on the roles assigned to users. This ensures that only authorized users, such as administrators, can view or modify the data stored in the database tables.
 
-Subtask 1: User Creation
+#### User Creation
 
 In this subtask, user accounts are created in the ServiceNow system to allow individuals to access the application based on their responsibilities.
 
@@ -478,7 +479,7 @@ Assign appropriate roles to the user based on their access level.
 
 This step ensures that every person accessing the system has a unique user account.
 
-Subtask 2: Role Creation
+#### Role Creation
 
 Roles are created to define different levels of access within the system. Each role determines what actions a user can perform.
 
@@ -500,7 +501,7 @@ Admin Role – Full access to tables and records
 
 Client/User Role – Access only to submit catalog requests
 
-Subtask 3: ACL Creation
+#### Subtask 3: ACL Creation
 
 Access Control Rules (ACLs) are configured to restrict or grant permissions to specific tables, records, or fields.
 
@@ -519,6 +520,91 @@ Specify the Roles that are allowed to perform the operation.
 Save and test the ACL rule.
 
 By implementing ACLs, the system ensures that only authorized users can access sensitive insurance data, while regular users can interact with the system only through the catalog interface.
+
+## Data Integrity
+Data integrity is maintained in the Vehicle Insurance Management System by implementing field validation rules and automation mechanisms. These measures ensure that the data entered into the system is accurate, complete, and reliable.
+
+Mandatory fields are enforced on the client side to prevent users from submitting incomplete forms. This ensures that important information such as customer details, policy information, and claim data is always captured.
+
+In addition, automation is implemented to send reminders to clients regarding important events such as policy expiry or renewal dates. This is achieved through Scheduled Jobs, Events, and Email Notifications in ServiceNow. These automated processes help keep users informed and ensure timely actions without manual intervention.
+
+#### 1. Creation of Events in ServiceNow
+
+In this subtask, system events are created to trigger notifications when specific actions occur within the application.
+
+Steps:
+
+Navigate to System Policy → Events → Registry.
+
+Click New to create a new event.
+
+Provide the Event Name and description.
+
+Save the event.
+
+These events act as triggers that initiate notifications or automated actions within the system.
+
+#### 2. Configuration of Notifications using Event in ServiceNow
+
+Notifications are configured to automatically send emails to users when specific events are triggered.
+
+Steps:
+
+Navigate to System Notification → Email → Notifications.
+
+Click New to create a notification.
+
+Provide a Notification Name and description.
+
+Select the Table related to the notification.
+
+In the When to Send section, choose the event created earlier.
+
+Configure the Recipients such as clients or administrators.
+
+Define the Email Subject and Message.
+
+Save and test the notification.
+
+This ensures that users receive timely alerts and updates.
+
+#### 3. Creation of Email Script for Dynamic Links
+
+Email scripts are created to generate dynamic links within email notifications. These links allow users to directly navigate to the relevant form or record in the system.
+
+Steps:
+
+Navigate to System Notification → Email → Email Scripts.
+
+Click New to create an email script.
+
+Write the script to generate a dynamic URL that redirects the user to the required form.
+
+Save the email script.
+
+Attach the script to the notification email template.
+
+This feature improves user convenience by allowing quick access to the required records directly from email.
+
+#### 4. Configure Scheduled Jobs to Automate Email Reminders
+
+Scheduled Jobs are configured to automatically trigger reminder emails at specific intervals.
+
+Steps:
+
+Navigate to System Definition → Scheduled Jobs.
+
+Click New to create a scheduled job.
+
+Define the schedule (daily, weekly, or monthly).
+
+Configure the script or condition to check for policy expiry or renewal dates.
+
+Trigger the appropriate event to send reminder notifications.
+
+Save and test the scheduled job.
+
+This automation ensures that clients receive timely reminders about policy renewals and other important updates.
 
 
 # Phase 5: Deployment, Documentation & Final Presentation
