@@ -611,6 +611,65 @@ This automation ensures that clients receive timely reminders about policy renew
 
 # Phase 5: Deployment, Documentation & Final Presentation
 
+## Reporting & Dashboards
+
+Reporting and Dashboards are used in the Vehicle Insurance Management System to visualize and analyze important data related to insurance policies, renewals, and claims. Reports help administrators monitor system activities, track policy records, and make data-driven decisions. Dashboards provide a centralized view where multiple reports can be displayed together for quick insights.
+
+### Dashboard Creation in ServiceNow
+
+In this activity, a dashboard is created to display reports related to insurance data.
+
+Steps:
+
+Navigate to the ServiceNow Home Page.
+
+Click on the All Menu.
+
+Type Dashboard in the search bar.
+
+Navigate to Usage and Governance → Dashboards.
+
+Click on the New button to create a new dashboard.
+
+Provide the Name as Insurance Data Reports.
+
+Save the dashboard.
+
+This dashboard will be used to display multiple reports related to the Vehicle Insurance Management System.
+
+### Reports Creation in ServiceNow
+
+In this activity, a report is created to visualize data stored in the custom tables.
+
+Steps:
+
+Navigate to the ServiceNow Home Page.
+
+Click on the All Menu.
+
+Type Reports in the search bar.
+
+Navigate to Usage and Governance → Reports.
+
+Click on the New button to create a new report.
+
+Provide the Name as New Policies Data.
+
+Select Data Source as Table.
+
+Choose the Table as New Clients Data.
+
+Click Next.
+
+Select the Report Type as Bar Chart.
+
+Open the Configure tab.
+
+Select the Group By and Additional Group By fields as required.
+
+Save and Run the Report.
+
+After generating the report, it can be added to the previously created dashboard Insurance Data Reports so that administrators can easily view policy data in a graphical format.
 
 
 ## Innovation
