@@ -405,7 +405,80 @@ This configuration ensures that the rejection reason is captured whenever a clai
 
 
 # Phase 3: UI/UX Development & Customization
+# Phase 3 – UI/UX Development & Validations
 
+In this phase, the user interface and form validations were implemented in ServiceNow for the **Vehicle Insurance Claim** catalog item.
+
+## Catalog Item
+Vehicle Insurance Claim
+
+## Variables Created
+
+The following variables were created for the claim form:
+
+1. Policy Number (Single Line Text)
+2. Vehicle Number (Single Line Text)
+3. Accident Date (Date)
+4. Accident Description (Multi Line Text)
+5. Upload Damage Photo (Attachment)
+6. Chassis Number (Single Line Text)
+7. Engine Number (Single Line Text)
+8. Driving License (Single Line Text)
+9. Email Address (Single Line Text)
+10. Mobile Number (Single Line Text)
+
+---
+
+# Catalog Client Script Validations
+
+## Validation 1 – Mobile Number Validation
+Ensures the user enters a valid 10 digit mobile number.
+
+## Validation 2 – Email Validation
+Validates the email format.
+
+## Validation 3 – Chassis Number Validation
+Ensures the chassis number length is valid.
+
+## Validation 4 – Engine Number Validation
+Checks the engine number format.
+
+## Validation 5 – Driving License Validation
+Validates the driving license number.
+
+## Validation 6 – Vehicle Number Validation
+Checks the vehicle number format.
+
+## Validation 7 – Policy Number Validation
+Ensures policy number is valid.
+
+## Validation 8 – Accident Date Validation
+Prevents selecting a future date.
+
+## Validation 9 – Accident Description Required
+Ensures description is entered before submission.
+
+## Validation 10 – Email Required
+Email field must not be empty.
+
+## Validation 11 – Mobile Required
+Mobile number must be entered.
+
+## Validation 12 – Policy Required
+Policy number must be filled.
+
+## Validation 13 – Vehicle Required
+Vehicle number must be filled before submission.
+
+---
+
+# Technologies Used
+
+- ServiceNow
+- Catalog Items
+- Catalog Variables
+- Catalog Client Scripts
+- JavaScript
 
 
 # Phase 4: Data Migration& Security Controls
