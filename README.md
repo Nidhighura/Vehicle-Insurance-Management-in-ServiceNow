@@ -472,6 +472,20 @@ The system is designed to be scalable so that additional features can be added i
 
 # Phase 6: QA & UAT Testing Results
 
+#Renewal Policy User’s Testing
+The system manages vehicle insurance policy renewals by tracking policy expiry dates and automatically generating renewal records. It sends advance notifications to users so they can take timely action before the policy expires. The renewal information is checked for accuracy and then updated in the system, ensuring continuous insurance coverage and proper compliance with policy requirement
+subtask 1 : catlog testing
+Here is a short explanation for Catalog Testing in ServiceNow that you can use in your report:
+
+Catalog Testing:
+Catalog Testing is performed to verify that the service catalog items in ServiceNow work correctly and provide the expected services to users. It checks whether catalog forms, fields, and workflows function properly when a user submits a request. During testing, different inputs are entered to ensure validations, approvals, and request generation work as expected. This testing ensures that users can easily request services through the catalog and that the system processes those requests accurately and efficiently.
+<img width="1600" height="706" alt="1000197911" src="https://github.com/user-attachments/assets/b178fe63-fadc-4777-b4df-ac501d00a7a4" />
+<img width="1295" height="660" alt="1000197910" src="https://github.com/user-attachments/assets/47b1b232-b801-4ef2-93d4-8fa0a923231d" />
+<img width="1260" height="648" alt="1000197909" src="https://github.com/user-attachments/assets/bd58642a-2912-4e60-90b3-4504e09ff325" />
+subtask 2 :Database Tables Testing
+Database Tables Testing is performed to verify that all data related to vehicle insurance policies is correctly stored and managed in the system tables. During this testing, records such as policy number, customer details, expiry date, renewal status, and premium information are checked to ensure they are inserted, updated, and retrieved accurately. The testing also confirms that relationships between tables are maintained properly and that no incorrect or duplicate data is stored. This helps ensure data integrity, reliability, and smooth functioning of the insurance management system.
+<img width="1600" height="576" alt="1000197918" src="https://github.com/user-attachments/assets/fed9c6dd-3b1d-48d8-9c44-f6a34324d3e7" />
+<img width="1600" height="724" alt="1000197912" src="https://github.com/user-attachments/assets/276df4a0-020d-46fe-98ec-b9d26e3fd888" />
 
 # Phase 7: Conclusion
 The Vehicle Insurance Management System built on ServiceNow simplifies the process of managing vehicle insurance policies, renewals, and claims. It allows users to register vehicles, view policy details, track expiry dates, and receive automatic renewal reminders. The system improves transparency, reduces manual work, and helps manage insurance operations more efficiently through automated workflows and real-time reports.
