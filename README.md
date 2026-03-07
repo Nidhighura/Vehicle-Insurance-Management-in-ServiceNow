@@ -39,19 +39,19 @@ The Vehicle Insurance Management solution implemented in ServiceNow involves sev
 
 The implementation of the Vehicle Insurance Management solution in ServiceNow will follow a structured roadmap divided into key milestones to ensure smooth development, testing, and deployment. The roadmap includes catalog creation, form configuration, approval workflow integration, testing, and final deployment.
 
-#### Catalog Creation
+### Catalog Creation
 The first milestone focuses on creating a structured and user-friendly service catalog for vehicle insurance services. This includes identifying different insurance request types such as new policy requests, policy renewals, and claims. Appropriate catalog categories and service items will be defined, and catalog items will be created with clear titles and descriptions. Collaboration with fleet administrators and approval teams will ensure the accuracy of information and alignment with existing ITSM service structures.
 
-#### Form Setup
+### Form Setup
 In this stage, dynamic forms will be designed to collect all necessary insurance request details. Catalog item forms will be built using variables to capture information such as vehicle details, policy type, insurer information, and policy expiry date. Dynamic field visibility will be implemented based on the type of request, and mandatory fields will be configured to ensure complete and accurate submissions. These forms will also align with automation processes and document validation requirements.
 
-#### Approval Integration
+### Approval Integration
 This milestone focuses on automating approval workflows for insurance-related actions. Approval chains will be defined, such as approvals from team managers or designated approval officers. The workflows will be configured using Flow Designer in ServiceNow. Additionally, audit logs and automated email notifications will be enabled to maintain transparency and proper tracking of approval activities.
 
-#### Testing
+### Testing
 During the testing phase, the complete lifecycle of insurance requests will be validated. Unit testing will be performed for each catalog item, and end-to-end scenarios such as new policy requests, renewals, and claims will be simulated. Approvals, task creation, notifications, and document handling will be verified. User Acceptance Testing (UAT) will be conducted with stakeholders, and any identified defects will be documented and resolved.
 
-* Milestone 5: Deployment
+### Deployment
 The final milestone involves deploying the vehicle insurance management solution into the production environment. A deployment checklist will be finalized, and workflows along with catalog items will be migrated to production. After deployment, system performance and user feedback will be monitored. Training sessions will be conducted for users and processing teams, and proper support and maintenance processes will be established to ensure smooth system operation.
 
 # Phase 2: Backend Development & Configurations
@@ -60,7 +60,7 @@ The final milestone involves deploying the vehicle insurance management solution
 
 ###  1. New Insurance Data Table
     
-     ####  Creation of Table
+  ####  Creation of Table
         · Navigate to: System Definition > Tables.
         
         · Click New to create a new table.
@@ -265,6 +265,7 @@ The final milestone involves deploying the vehicle insurance management solution
         <img width="1495" height="781" alt="image" src="https://github.com/user-attachments/assets/14b233b3-5af9-4648-bc89-f57dbfed8f44" />
 
 ### 2. Renewal Data Table
+
   #### Creation of Table
     · Navigate to: System Definition > Tables.
     
@@ -340,14 +341,14 @@ When a renewal request is created, the system automatically calculates the new e
 
 Business Rules are implemented in the Vehicle Insurance Management System to automate system behavior, enforce business logic, and maintain data consistency. These rules run on the server side whenever a record is created, updated, or modified. By using Business Rules, the system ensures that insurance policies and claim records are processed automatically without requiring manual intervention.
 
-####  UI Policy Configuration on Claims Table for Section Visibility
+###  UI Policy Configuration on Claims Table for Section Visibility
 
 In this subtask, a UI Policy is configured on the Claims Data table to control the visibility of form sections based on the approval status selected by the user.
 
-Scenario:
+#### Scenario:
 If the Approval Status is set to "Approved", the Claim Settlement Details section should become visible so that the settlement information can be entered.
 
-Implementation Steps:
+#### Implementation Steps:
 
 Navigate to UI Policies in ServiceNow.
 
@@ -371,14 +372,14 @@ Save and test the UI Policy on the Claims form.
 
 This configuration ensures that settlement details are only visible when the claim has been approved.
 
-#### Subtask 2: UI Policy Configuration on Claims Table for Fields Visibility
+### UI Policy Configuration on Claims Table for Fields Visibility
 
 This subtask focuses on controlling the visibility of specific fields on the Claims form based on user selections.
 
-Scenario:
+#### Scenario:
 If the Approval Status is set to "Rejected", the Reason for Rejection field should appear so that the admin can provide a valid reason for rejecting the claim.
 
-Implementation Steps:
+#### Implementation Steps:
 
 Navigate to UI Policies in ServiceNow.
 
@@ -414,7 +415,7 @@ In this phase, all customer-related data such as New Client registrations, Polic
 
 To automate the data handling process, Process Automation techniques are implemented using ServiceNow Catalog Items. The variables entered by users through the catalog forms are automatically captured and mapped to the corresponding custom tables: New Clients Data, Renewal Data, and Claims Data. This approach helps in maintaining accurate records and simplifies data tracking and management.
 
-####  Creation of Flow using Flow Designer Tool
+###  Creation of Flow using Flow Designer Tool
 
 In this subtask, a Flow is created using the ServiceNow Flow Designer to automate the process of capturing user input from catalog items and storing it in the appropriate custom tables.
 
@@ -424,7 +425,7 @@ The Flow Designer helps automate backend processes without requiring complex scr
 
 
 
-####  Configuring Trigger Conditions
+###  Configuring Trigger Conditions
 
 The trigger condition defines when the flow should start executing. In this project, the flow is triggered whenever a user submits a catalog item related to vehicle insurance services.
 
@@ -440,7 +441,7 @@ Once the catalog item is submitted, the flow is automatically triggered to proce
 <img width="1600" height="592" alt="image" src="https://github.com/user-attachments/assets/fc9d29ba-16fc-4cf5-8835-ff03d7a34f6f" />
 
 
-####  Configuring Actions
+###  Configuring Actions
 
 After the trigger condition is met, the system performs specific actions within the flow. These actions are responsible for storing the submitted data in the respective custom tables.
 
@@ -462,7 +463,7 @@ Access control is implemented in the Vehicle Insurance Management System to ensu
 
 To enforce this restriction and maintain secure data handling, Access Control Rules (ACLs) are configured within ServiceNow. These rules control the read, write, create, and delete permissions for records and fields based on the roles assigned to users. This ensures that only authorized users, such as administrators, can view or modify the data stored in the database tables.
 
-#### User Creation
+### User Creation
 
 In this subtask, user accounts are created in the ServiceNow system to allow individuals to access the application based on their responsibilities.
 
@@ -480,7 +481,7 @@ Assign appropriate roles to the user based on their access level.
 
 This step ensures that every person accessing the system has a unique user account.
 
-#### Role Creation
+### Role Creation
 
 Roles are created to define different levels of access within the system. Each role determines what actions a user can perform.
 
@@ -529,7 +530,7 @@ Mandatory fields are enforced on the client side to prevent users from submittin
 
 In addition, automation is implemented to send reminders to clients regarding important events such as policy expiry or renewal dates. This is achieved through Scheduled Jobs, Events, and Email Notifications in ServiceNow. These automated processes help keep users informed and ensure timely actions without manual intervention.
 
-#### 1. Creation of Events in ServiceNow
+### 1. Creation of Events in ServiceNow
 
 In this subtask, system events are created to trigger notifications when specific actions occur within the application.
 
@@ -545,7 +546,7 @@ Save the event.
 
 These events act as triggers that initiate notifications or automated actions within the system.
 
-#### 2. Configuration of Notifications using Event in ServiceNow
+### 2. Configuration of Notifications using Event in ServiceNow
 
 Notifications are configured to automatically send emails to users when specific events are triggered.
 
@@ -569,7 +570,7 @@ Save and test the notification.
 
 This ensures that users receive timely alerts and updates.
 
-#### 3. Creation of Email Script for Dynamic Links
+### 3. Creation of Email Script for Dynamic Links
 
 Email scripts are created to generate dynamic links within email notifications. These links allow users to directly navigate to the relevant form or record in the system.
 
@@ -587,7 +588,7 @@ Attach the script to the notification email template.
 
 This feature improves user convenience by allowing quick access to the required records directly from email.
 
-#### 4. Configure Scheduled Jobs to Automate Email Reminders
+### 4. Configure Scheduled Jobs to Automate Email Reminders
 
 Scheduled Jobs are configured to automatically trigger reminder emails at specific intervals.
 
@@ -615,9 +616,11 @@ This automation ensures that clients receive timely reminders about policy renew
 ## Innovation
 
 To improve the system functionality, an automated email reminder feature can be implemented. This feature will automatically notify users before their vehicle insurance policy expires so that they can renew the policy on time.
+
 ## Explanation Clarity
 
 The system workflow is designed in a clear and structured way so that users can easily understand how insurance policies are created, managed, and renewed. Each automation process such as expiry calculation, PDF generation, and renewal processing is implemented with clear business logic to ensure smooth system operation.
+
 ## Scalability & Future Plan
 
 The system is designed to be scalable so that additional features can be added in the future. In upcoming updates, features such as advanced reporting, AI-based claim analysis, and integration with external insurance databases can be implemented to enhance the overall functionality of the system.
