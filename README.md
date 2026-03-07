@@ -491,12 +491,13 @@ Database Tables Testing is done to check whether all data is correctly stored an
 subtask 3 :Emails Testing
 
 Email Testing is performed to verify that the system sends correct email notifications to users. It checks whether alerts related to policy renewal, expiry reminders, and other updates are generated properly in ServiceNow. This testing ensures that the email content, subject, and recipient details are accurate and that notifications are delivered on time.
-<img width="1327" height="810" alt="1000197919" src="https://github.com/user-attachments/assets/1d7658c5-0b9a-4071-aa0d-d0731b640fa0" />
 <img width="1600" height="576" alt="1000197918" src="https://github.com/user-attachments/assets/58c694f0-ef82-492b-bcc2-2e02420dde80" />
+<img width="1327" height="810" alt="1000197919" src="https://github.com/user-attachments/assets/1d7658c5-0b9a-4071-aa0d-d0731b640fa0" />
+
 subtasks 4 : Reminder’s Email Testing
 Reminder’s Email Testing is performed to ensure that automatic reminder emails are sent to users before the insurance policy expires. It verifies that the reminder notifications generated in ServiceNow contain correct policy details and are delivered to the right recipients at the scheduled time. This helps users take timely action for policy renewal.
-<img width="1319" height="676" alt="1000197921" src="https://github.com/user-attachments/assets/30caad39-0f4a-48b7-9453-d4d58c78df6b" />
-<img width="1600" height="686" alt="1000197920" src="https://github.com/user-attachments/assets/3840a84f-1cc1-48c6-8658-86cfbaec49e1" />
 
+<img width="1600" height="686" alt="1000197920" src="https://github.com/user-attachments/assets/3840a84f-1cc1-48c6-8658-86cfbaec49e1" />
+<img width="1319" height="676" alt="1000197921" src="https://github.com/user-attachments/assets/30caad39-0f4a-48b7-9453-d4d58c78df6b" />
 # Phase 7: Conclusion
 The Vehicle Insurance Management System built on ServiceNow simplifies the process of managing vehicle insurance policies, renewals, and claims. It allows users to register vehicles, view policy details, track expiry dates, and receive automatic renewal reminders. The system improves transparency, reduces manual work, and helps manage insurance operations more efficiently through automated workflows and real-time reports.
