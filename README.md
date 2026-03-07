@@ -484,9 +484,19 @@ Catalog Testing is performed to verify that the service catalog items in Service
 <img width="1295" height="660" alt="1000197910" src="https://github.com/user-attachments/assets/86c632de-7e65-4b54-b225-ce96c7800359" />
 
 subtask 2 :Database Tables Testing
-Database Tables Testing is performed to verify that all data related to vehicle insurance policies is correctly stored and managed in the system tables. During this testing, records such as policy number, customer details, expiry date, renewal status, and premium information are checked to ensure they are inserted, updated, and retrieved accurately. The testing also confirms that relationships between tables are maintained properly and that no incorrect or duplicate data is stored. This helps ensure data integrity, reliability, and smooth functioning of the insurance management system.
+Database Tables Testing:
+Database Tables Testing is done to check whether all data is correctly stored and updated in the system database. It verifies that records such as policy details, customer information, expiry dates, and renewal status are properly inserted and maintained in the tables of ServiceNow. This testing ensures data accuracy, consistency, and reliable system performance.
 <img width="1600" height="576" alt="1000197918" src="https://github.com/user-attachments/assets/fed9c6dd-3b1d-48d8-9c44-f6a34324d3e7" />
 <img width="1600" height="724" alt="1000197912" src="https://github.com/user-attachments/assets/276df4a0-020d-46fe-98ec-b9d26e3fd888" />
+subtask 3 :Emails Testing
+
+Email Testing is performed to verify that the system sends correct email notifications to users. It checks whether alerts related to policy renewal, expiry reminders, and other updates are generated properly in ServiceNow. This testing ensures that the email content, subject, and recipient details are accurate and that notifications are delivered on time.
+<img width="1327" height="810" alt="1000197919" src="https://github.com/user-attachments/assets/1d7658c5-0b9a-4071-aa0d-d0731b640fa0" />
+<img width="1600" height="576" alt="1000197918" src="https://github.com/user-attachments/assets/58c694f0-ef82-492b-bcc2-2e02420dde80" />
+subtasks 4 : Reminder’s Email Testing
+Reminder’s Email Testing is performed to ensure that automatic reminder emails are sent to users before the insurance policy expires. It verifies that the reminder notifications generated in ServiceNow contain correct policy details and are delivered to the right recipients at the scheduled time. This helps users take timely action for policy renewal.
+<img width="1319" height="676" alt="1000197921" src="https://github.com/user-attachments/assets/30caad39-0f4a-48b7-9453-d4d58c78df6b" />
+<img width="1600" height="686" alt="1000197920" src="https://github.com/user-attachments/assets/3840a84f-1cc1-48c6-8658-86cfbaec49e1" />
 
 # Phase 7: Conclusion
 The Vehicle Insurance Management System built on ServiceNow simplifies the process of managing vehicle insurance policies, renewals, and claims. It allows users to register vehicles, view policy details, track expiry dates, and receive automatic renewal reminders. The system improves transparency, reduces manual work, and helps manage insurance operations more efficiently through automated workflows and real-time reports.
