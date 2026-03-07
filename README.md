@@ -480,8 +480,9 @@ Here is a short explanation for Catalog Testing in ServiceNow that you can use i
 Catalog Testing:
 Catalog Testing is performed to verify that the service catalog items in ServiceNow work correctly and provide the expected services to users. It checks whether catalog forms, fields, and workflows function properly when a user submits a request. During testing, different inputs are entered to ensure validations, approvals, and request generation work as expected. This testing ensures that users can easily request services through the catalog and that the system processes those requests accurately and efficiently.
 <img width="1600" height="706" alt="1000197911" src="https://github.com/user-attachments/assets/b178fe63-fadc-4777-b4df-ac501d00a7a4" />
-<img width="1295" height="660" alt="1000197910" src="https://github.com/user-attachments/assets/47b1b232-b801-4ef2-93d4-8fa0a923231d" />
-<img width="1260" height="648" alt="1000197909" src="https://github.com/user-attachments/assets/bd58642a-2912-4e60-90b3-4504e09ff325" />
+<img width="1260" height="648" alt="1000197909" src="https://github.com/user-attachments/assets/426ed286-76f2-47b4-9162-02a695962532" />
+<img width="1295" height="660" alt="1000197910" src="https://github.com/user-attachments/assets/86c632de-7e65-4b54-b225-ce96c7800359" />
+
 subtask 2 :Database Tables Testing
 Database Tables Testing is performed to verify that all data related to vehicle insurance policies is correctly stored and managed in the system tables. During this testing, records such as policy number, customer details, expiry date, renewal status, and premium information are checked to ensure they are inserted, updated, and retrieved accurately. The testing also confirms that relationships between tables are maintained properly and that no incorrect or duplicate data is stored. This helps ensure data integrity, reliability, and smooth functioning of the insurance management system.
 <img width="1600" height="576" alt="1000197918" src="https://github.com/user-attachments/assets/fed9c6dd-3b1d-48d8-9c44-f6a34324d3e7" />
