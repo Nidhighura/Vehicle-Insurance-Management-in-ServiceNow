@@ -3,6 +3,8 @@
 - [Business Objectives](#business-objectives)
 - [Execution](#Execution)
 - [ Data Architecture](#DataArchitecture)
+- [Automation Logics](#AutomationLogics)
+- 
 
 
 
