@@ -1,6 +1,7 @@
 **Vehicle Insurance Management System** is a platform designed to automate and streamline the management of vehicle insurance processes. It enables organizations to handle policy creation, renewals, claims, document storage, and approvals through a centralized digital workflow. The system provides automated notifications for policy expiry and renewals, along with dashboards and reports for real-time monitoring. By replacing manual processes, it improves efficiency, ensures compliance, and enhances transparency in managing vehicle insurance activities. 🚗📊
-[ Business Objectives ]
-(https://github.com/Nidhighura/Vehicle-Insurance-Management-in-ServiceNow/tree/main?tab=readme-ov-file#business-objectives)
+
+[Business Objectives]
+(#business-objectives)
 
 # Phase 1: Requirement Analysis & Planning
 
