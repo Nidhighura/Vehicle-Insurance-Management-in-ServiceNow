@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1945663_insuranc_u_insurance_clients_data</collection>
+        <condition/>
+        <description>Sends notifications for policy status changes and expiry reminders</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Policy Status Notifications</name>
+        <order>200</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[
+        // Import the notification utility
+        var notificationUtil = new InsuranceNotificationUtils();
+        
+        // Send notifications for policy status changes
+        if (current.status.changes() || current.isNewRecord()) {
+            var status = current.getValue('status');
+            
+            if (status == 'active') {
+                gs.addInfoMessage('Policy activated for client: ' + current.getValue('client_name'));
+            } else if (status == 'cancelled') {
+                gs.addInfoMessage('Policy cancelled for client: ' + current.getValue('client_name'));
+                // Send notification about cancellation
+                notificationUtil.sendPolicyExpiryNotification(current);
+            }
+        }
+        
+        // Check for policy expiry within 30 days
+        if (!current.policy_end_date.nil()) {
+            var expiryDate = new GlideDateTime(current.getValue('policy_end_date'));
+            var currentDate = new GlideDateTime();
+            var thirtyDaysFromNow = new GlideDateTime(currentDate);
+            thirtyDaysFromNow.addDaysLocalTime(30);
+            
+            if (expiryDate.compareTo(currentDate) > 0 && expiryDate.compareTo(thirtyDaysFromNow) <= 0) {
+                notificationUtil.sendPolicyExpiryNotification(current);
+            }
+        }
+    ]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b3ef40a5d96d494da52f3819311c5752</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Policy Status Notifications</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_script_b3ef40a5d96d494da52f3819311c5752</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=b3ef40a5d96d494da52f3819311c5752"/>
+</record_update>

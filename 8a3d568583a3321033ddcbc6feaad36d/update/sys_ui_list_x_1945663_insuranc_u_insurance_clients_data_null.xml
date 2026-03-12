@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_1945663_insuranc_u_insurance_clients_data" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>client_name</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>dbd6c1f58327761033ddcbc6feaad313</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>contact_email</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>53d6c1f58327761033ddcbc6feaad314</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>contact_phone</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>d7d6c1f58327761033ddcbc6feaad314</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>policy_end_date</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>5fd6c1f58327761033ddcbc6feaad314</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>policy_number</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>d3d6c1f58327761033ddcbc6feaad315</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>policy_start_date</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>5bd6c1f58327761033ddcbc6feaad315</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>policy_type</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>dfd6c1f58327761033ddcbc6feaad315</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>premium_amount</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>57d6c1f58327761033ddcbc6feaad316</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>status</element>
+            <list_id display_value="x_1945663_insuranc_u_insurance_clients_data" element="NULL" name="x_1945663_insuranc_u_insurance_clients_data" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">5bd6c1f58327761033ddcbc6feaad312</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_id>dbd6c1f58327761033ddcbc6feaad316</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_1945663_insuranc_u_insurance_clients_data</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-11 08:19:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5bd6c1f58327761033ddcbc6feaad312</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1945663_insuranc_u_insurance_clients_data</sys_name>
+            <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+            <sys_update_name>sys_ui_list_x_1945663_insuranc_u_insurance_clients_data_null</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-11 08:19:53</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

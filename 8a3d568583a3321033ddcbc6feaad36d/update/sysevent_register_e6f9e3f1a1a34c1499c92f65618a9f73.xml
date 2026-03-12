@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <caller_access/>
+        <derived_priority/>
+        <description>Fired when claim status changes and client needs notification</description>
+        <event_name>insurance.claim.status.update</event_name>
+        <fired_by/>
+        <priority/>
+        <queue/>
+        <suffix/>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:20</sys_created_on>
+        <sys_id>e6f9e3f1a1a34c1499c92f65618a9f73</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>insurance.claim.status.update</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sysevent_register_e6f9e3f1a1a34c1499c92f65618a9f73</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:20</sys_updated_on>
+        <table>x_1945663_insuranc_u_claims_data</table>
+    </sysevent_register>
+</record_update>

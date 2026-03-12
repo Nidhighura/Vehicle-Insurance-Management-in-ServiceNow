@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="claim_type" table="x_1945663_insuranc_u_claims_data" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>claim_type</element>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>claim_type</sys_name>
+            <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+            <sys_update_name>sys_choice_x_1945663_insuranc_u_claims_data_claim_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Accident</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>accident</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Theft</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>theft</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Fire Damage</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>fire</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Water Damage</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>water</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Weather Related</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>weather</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Medical</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>medical</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>claim_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Other</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_claims_data</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <value>other</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

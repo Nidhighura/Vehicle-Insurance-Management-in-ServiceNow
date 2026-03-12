@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>sc_req_item</collection>
+        <condition/>
+        <description>Processes new policy catalog submissions and creates insurance client records</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Process New Policy Catalog Submission</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[
+        // Check if this is a new policy application
+        var catItem = current.cat_item.toString();
+        if (catItem && current.cat_item.name && current.cat_item.name.toString().indexOf('New Insurance Policy') > -1) {
+            
+            // Get catalog item variables
+            var variables = {};
+            var variableGR = new GlideRecord('sc_item_option_mtom');
+            variableGR.addQuery('request_item', current.getUniqueValue());
+            variableGR.query();
+            
+            while (variableGR.next()) {
+                var varName = variableGR.sc_item_option.name.toString();
+                var varValue = variableGR.getValue('value');
+                variables[varName] = varValue;
+            }
+            
+            // Create new insurance client record
+            var insuranceGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+            insuranceGR.initialize();
+            
+            // Map variables to insurance client fields
+            if (variables.first_name && variables.last_name) {
+                insuranceGR.setValue('client_name', variables.first_name + ' ' + variables.last_name);
+            }
+            insuranceGR.setValue('contact_email', variables.email || '');
+            insuranceGR.setValue('contact_phone', variables.mobile_number || '');
+            insuranceGR.setValue('policy_type', variables.policy_type || 'auto');
+            
+            // Generate policy number
+            var policyNumber = 'POL-' + new GlideDateTime().getNumericValue();
+            insuranceGR.setValue('policy_number', policyNumber);
+            
+            // Set policy dates
+            var startDate = new GlideDateTime();
+            insuranceGR.setValue('policy_start_date', startDate.getDisplayValue());
+            
+            // Set status
+            insuranceGR.setValue('status', 'active');
+            
+            var newPolicyId = insuranceGR.insert();
+            
+            if (newPolicyId) {
+                // Update the catalog request with the policy number
+                current.setValue('state', '3'); // Closed Complete
+                current.setValue('stage', 'closed_complete');
+                var workNotes = 'Policy created successfully. Policy Number: ' + policyNumber + 
+                              '\nPolicy ID: ' + newPolicyId;
+                current.setWorkNotes(workNotes);
+                
+                // Fire welcome event
+                gs.eventQueue('insurance.policy.welcome', insuranceGR,
+                             insuranceGR.getValue('client_name'),
+                             policyNumber,
+                             variables.email);
+                
+                gs.info('New policy created from catalog submission: ' + policyNumber);
+            }
+        }
+    ]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0825863b5d8540f7aefe20b7e24bcdf9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Process New Policy Catalog Submission</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_script_0825863b5d8540f7aefe20b7e24bcdf9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:15</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=0825863b5d8540f7aefe20b7e24bcdf9"/>
+</record_update>

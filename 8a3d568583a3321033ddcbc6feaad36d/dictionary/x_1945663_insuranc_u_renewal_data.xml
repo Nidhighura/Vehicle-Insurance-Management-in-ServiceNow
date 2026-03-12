@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="913fd68983a3321033ddcbc6feaad366" label="Renewal Data" max_length="40" name="x_1945663_insuranc_u_renewal_data" type="collection">
+        <element label="Notification Sent" max_length="40" name="notification_sent" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Previous Premium Amount" max_length="20" name="previous_premium" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="New Premium Amount" mandatory="true" max_length="20" name="new_premium" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Agent Notes" max_length="500" name="agent_notes" type="string"/>
+        <element attributes="encode_utf8=false" display="true" label="Client Reference" mandatory="true" max_length="32" name="client_reference" reference="x_1945663_insuranc_u_insurance_clients_data" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Renewal Type" max_length="40" name="renewal_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Manual Renewal" sequence="1" value="manual"/>
+                <element inactive_on_update="false" label="Automatic Renewal" sequence="0" value="automatic"/>
+                <element inactive_on_update="false" label="Modified Terms" sequence="2" value="modified"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="annual" label="Renewal Period" max_length="40" name="renewal_period" type="string">
+            <choice>
+                <element inactive_on_update="false" label="1 Month" sequence="0" value="monthly"/>
+                <element inactive_on_update="false" label="12 Months" sequence="3" value="annual"/>
+                <element inactive_on_update="false" label="6 Months" sequence="2" value="biannual"/>
+                <element inactive_on_update="false" label="3 Months" sequence="1" value="quarterly"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Renewal Date" mandatory="true" max_length="40" name="renewal_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="pending" label="Renewal Status" max_length="40" name="renewal_status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Approved" sequence="1" value="approved"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Processed" sequence="3" value="processed"/>
+                <element inactive_on_update="false" label="Rejected" sequence="2" value="rejected"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="client_reference"/>
+        </index>
+    </element>
+</database>

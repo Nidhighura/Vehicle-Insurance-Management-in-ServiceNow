@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[import { gs, GlideRecord, GlideDateTime } from '@servicenow/glide'
+
+export function validateClaimsData(current, previous) {
+    // Validate claims data before saving
+    var isValid = true;
+    var errorMessages = [];
+    
+    // Check if claim number is unique
+    if (!current.claim_number.nil()) {
+        var claimGR = new GlideRecord('x_1945663_insuranc_u_claims_data');
+        claimGR.addQuery('claim_number', current.getValue('claim_number'));
+        claimGR.addQuery('sys_id', '!=', current.getUniqueValue());
+        claimGR.query();
+        
+        if (claimGR.hasNext()) {
+            isValid = false;
+            errorMessages.push('Claim number must be unique.');
+        }
+    }
+    
+    // Validate incident date is not in the future
+    if (!current.incident_date.nil()) {
+        var incidentDate = new GlideDateTime(current.getValue('incident_date'));
+        var currentDate = new GlideDateTime();
+        
+        if (incidentDate.compareTo(currentDate) > 0) {
+            isValid = false;
+            errorMessages.push('Incident date cannot be in the future.');
+        }
+    }
+    
+    // Validate reported date is not before incident date
+    if (!current.incident_date.nil() && !current.reported_date.nil()) {
+        var incidentDate = new GlideDateTime(current.getValue('incident_date'));
+        var reportedDate = new GlideDateTime(current.getValue('reported_date'));
+        
+        if (reportedDate.compareTo(incidentDate) < 0) {
+            isValid = false;
+            errorMessages.push('Reported date cannot be before the incident date.');
+        }
+    }
+    
+    // Validate claim amount
+    var claimAmount = current.getValue('claim_amount');
+    if (!gs.nil(claimAmount)) {
+        var amount = parseFloat(claimAmount);
+        if (isNaN(amount) || amount <= 0) {
+            isValid = false;
+            errorMessages.push('Claim amount must be a positive number.');
+        }
+    }
+    
+    // Validate approved amount is not greater than claim amount
+    if (!current.approved_amount.nil() && !current.claim_amount.nil()) {
+        var approvedAmount = parseFloat(current.getValue('approved_amount'));
+        var claimAmount = parseFloat(current.getValue('claim_amount'));
+        
+        if (approvedAmount > claimAmount) {
+            isValid = false;
+            errorMessages.push('Approved amount cannot be greater than the claim amount.');
+        }
+    }
+    
+    if (!isValid) {
+        gs.addErrorMessage('Claims Validation Error: ' + errorMessages.join(' '));
+        current.setAbortAction(true);
+    }
+    
+    return isValid;
+}
+
+export function autoAssignApprover(current, previous) {
+    // Auto-assign approver based on claim amount
+    if (current.isNewRecord() || current.claim_amount.changes()) {
+        var claimAmount = parseFloat(current.getValue('claim_amount') || 0);
+        var assignedApprover = '';
+        
+        // Assign approver based on claim amount thresholds
+        if (claimAmount <= 1000) {
+            assignedApprover = 'junior_adjuster';
+        } else if (claimAmount <= 10000) {
+            assignedApprover = 'senior_adjuster';
+        } else if (claimAmount <= 50000) {
+            assignedApprover = 'claims_manager';
+        } else {
+            assignedApprover = 'claims_director';
+        }
+        
+        current.setValue('adjuster_assigned', assignedApprover);
+        
+        gs.info('Auto-assigned approver: ' + assignedApprover + 
+               ' for claim amount: $' + claimAmount);
+    }
+}
+
+export function updateClaimStatus(current, previous) {
+    // Update claim status based on business logic
+    var claimStatus = current.getValue('claim_status');
+    var previousStatus = previous ? previous.getValue('claim_status') : '';
+    
+    // If claim is approved, set settlement date
+    if (claimStatus == 'approved' && previousStatus != 'approved') {
+        if (current.settlement_date.nil()) {
+            var currentDate = new GlideDateTime();
+            current.setValue('settlement_date', currentDate.getDisplayValue());
+        }
+        
+        // Update notes
+        var currentNotes = current.getValue('notes') || '';
+        var approvalNote = '\\n[' + new GlideDateTime().getDisplayValue() + '] Claim approved automatically.';
+        current.setValue('notes', currentNotes + approvalNote);
+        
+        gs.addInfoMessage('Claim ' + current.getValue('claim_number') + ' has been approved and settlement date set.');
+    }
+    
+    // If claim is paid, set status to closed after 30 days
+    if (claimStatus == 'paid' && previousStatus != 'paid') {
+        // Add note about automatic closure
+        var currentNotes = current.getValue('notes') || '';
+        var paidNote = '\\n[' + new GlideDateTime().getDisplayValue() + '] Claim payment processed. Will auto-close in 30 days.';
+        current.setValue('notes', currentNotes + paidNote);
+    }
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/business-rules/claims-automation.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_id>0fa4d93623874fb1b45286f7f5022da6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/business-rules/claims-automation.js</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_module_0fa4d93623874fb1b45286f7f5022da6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+    </sys_module>
+</record_update>

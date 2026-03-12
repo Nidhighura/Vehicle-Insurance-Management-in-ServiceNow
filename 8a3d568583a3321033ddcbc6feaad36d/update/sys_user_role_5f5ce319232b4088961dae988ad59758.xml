@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Administrative role with full system access including configuration and user management</description>
+        <elevated_privilege>true</elevated_privilege>
+        <federated_id>fAe9SJhOL9KUSDLMadSM73kFi0l8Q1CNxKLcKg7+e5U=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1945663_insuranc.insurance_admin</name>
+        <scoped_admin>true</scoped_admin>
+        <suffix>insurance_admin</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:18</sys_created_on>
+        <sys_id>5f5ce319232b4088961dae988ad59758</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc.insurance_admin</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_user_role_5f5ce319232b4088961dae988ad59758</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:18</sys_updated_on>
+    </sys_user_role>
+</record_update>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="catalog_script_client">
+    <catalog_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_catalog>false</applies_catalog>
+        <applies_extended>false</applies_extended>
+        <applies_req_item>false</applies_req_item>
+        <applies_sc_task>false</applies_sc_task>
+        <applies_target_record>false</applies_target_record>
+        <applies_to>catalog_item</applies_to>
+        <cat_item display_value="New Insurance Policy Application">0559f00814bf4a70b0cd28f2e4db2e22</cat_item>
+        <cat_variable/>
+        <condition/>
+        <description/>
+        <field/>
+        <global>false</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Vehicle Number Validation</name>
+        <order/>
+        <published_ref/>
+        <script><![CDATA[
+function onChange(control, oldValue, newValue, isLoading) {
+    if (isLoading || newValue === '') {
+        return;
+    }
+    
+    // Vehicle number format validation (varies by region, basic alphanumeric check)
+    var vehicleRegex = /^[A-Z0-9\s-]{6,15}$/i;
+    if (!vehicleRegex.test(newValue)) {
+        g_form.showErrorBox('vehicle_number', 'Please enter a valid vehicle registration number');
+    } else {
+        g_form.hideErrorBox('vehicle_number');
+    }
+}
+        ]]></script>
+        <sys_class_name>catalog_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:11:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c9da023954404658b1ca723b7145d9a4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Vehicle Number Validation</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>catalog_script_client_c9da023954404658b1ca723b7145d9a4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:11:51</sys_updated_on>
+        <table/>
+        <type>onChange</type>
+        <ui_type/>
+        <va_supported>true</va_supported>
+        <variable_set/>
+        <view/>
+    </catalog_script_client>
+</record_update>

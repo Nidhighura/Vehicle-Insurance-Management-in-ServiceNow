@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>sc_req_item</collection>
+        <condition/>
+        <description>Processes renewal catalog submissions and creates renewal records</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Process Renewal Catalog Submission</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[
+        // Check if this is a renewal request
+        var catItem = current.cat_item.toString();
+        if (catItem && current.cat_item.name && current.cat_item.name.toString().indexOf('Policy Renewal Request') > -1) {
+            
+            // Get catalog item variables
+            var variables = {};
+            var variableGR = new GlideRecord('sc_item_option_mtom');
+            variableGR.addQuery('request_item', current.getUniqueValue());
+            variableGR.query();
+            
+            while (variableGR.next()) {
+                var varName = variableGR.sc_item_option.name.toString();
+                var varValue = variableGR.getValue('value');
+                variables[varName] = varValue;
+            }
+            
+            // Find the client by policy number
+            var clientRef = '';
+            if (variables.policy_number) {
+                var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+                policyGR.addQuery('policy_number', variables.policy_number);
+                policyGR.query();
+                
+                if (policyGR.next()) {
+                    clientRef = policyGR.getUniqueValue();
+                }
+            }
+            
+            if (clientRef) {
+                // Create new renewal record
+                var renewalGR = new GlideRecord('x_1945663_insuranc_u_renewal_data');
+                renewalGR.initialize();
+                
+                renewalGR.setValue('client_reference', clientRef);
+                
+                // Set renewal date (usually policy expiry + 1 day)
+                var renewalDate = new GlideDateTime(policyGR.getValue('policy_end_date'));
+                renewalDate.addDaysLocalTime(1);
+                renewalGR.setValue('renewal_date', renewalDate.getDisplayValue());
+                
+                renewalGR.setValue('previous_premium', policyGR.getValue('premium_amount'));
+                renewalGR.setValue('new_premium', policyGR.getValue('premium_amount')); // Default to same
+                renewalGR.setValue('renewal_type', 'manual');
+                renewalGR.setValue('renewal_status', 'pending');
+                renewalGR.setValue('renewal_period', variables.renewal_period || 'annual');
+                renewalGR.setValue('agent_notes', 'Renewal requested via Service Portal. ' + 
+                                 (variables.coverage_changes || 'No coverage changes requested.'));
+                
+                var newRenewalId = renewalGR.insert();
+                
+                if (newRenewalId) {
+                    // Update the catalog request
+                    current.setValue('state', '3'); // Closed Complete
+                    current.setValue('stage', 'closed_complete');
+                    var workNotes = 'Renewal request processed successfully.' + 
+                                  '\nRenewal ID: ' + newRenewalId;
+                    current.setWorkNotes(workNotes);
+                    
+                    // Fire renewal notification event
+                    gs.eventQueue('insurance.renewal.status.update', renewalGR,
+                                 policyGR.getValue('client_name'),
+                                 'pending',
+                                 variables.email);
+                    
+                    gs.info('New renewal request created from catalog submission: ' + newRenewalId);
+                }
+            } else {
+                gs.addErrorMessage('Policy number not found: ' + variables.policy_number);
+            }
+        }
+    ]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8db9422d20ea4227a3080f5a59d23572</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Process Renewal Catalog Submission</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_script_8db9422d20ea4227a3080f5a59d23572</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:15</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=8db9422d20ea4227a3080f5a59d23572"/>
+</record_update>

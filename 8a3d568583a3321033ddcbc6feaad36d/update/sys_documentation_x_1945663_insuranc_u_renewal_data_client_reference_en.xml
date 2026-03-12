@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="client_reference" label="Client Reference" language="en" table="x_1945663_insuranc_u_renewal_data">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>client_reference</element>
+            <help/>
+            <hint/>
+            <label>Client Reference</label>
+            <language>en</language>
+            <name>x_1945663_insuranc_u_renewal_data</name>
+            <plural>Client References</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-09 06:50:25</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Client Reference</sys_name>
+            <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+            <sys_update_name>sys_documentation_x_1945663_insuranc_u_renewal_data_client_reference_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-09 06:50:25</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

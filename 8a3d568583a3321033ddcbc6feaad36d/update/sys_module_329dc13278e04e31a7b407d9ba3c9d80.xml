@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[import { gs, GlideRecord, GlideDateTime } from '@servicenow/glide'
+
+export function calculatePolicyExpiry(current, previous) {
+    // Automatically calculate policy expiry date based on policy type and start date
+    if (!current.policy_start_date.nil() && current.policy_end_date.nil()) {
+        var startDate = new GlideDateTime(current.getValue('policy_start_date'));
+        var policyType = current.getValue('policy_type');
+        
+        // Set expiry based on policy type (default 1 year)
+        var monthsToAdd = 12; // Default for most policies
+        
+        switch (policyType) {
+            case 'auto':
+                monthsToAdd = 6; // Auto policies expire in 6 months
+                break;
+            case 'health':
+                monthsToAdd = 12; // Health policies expire in 1 year
+                break;
+            case 'life':
+                monthsToAdd = 60; // Life policies expire in 5 years
+                break;
+            case 'business':
+                monthsToAdd = 12; // Business policies expire in 1 year
+                break;
+            default:
+                monthsToAdd = 12; // Default 1 year
+        }
+        
+        startDate.addMonthsLocalTime(monthsToAdd);
+        current.setValue('policy_end_date', startDate.getDisplayValue());
+        
+        gs.info('Policy expiry date automatically set to: ' + startDate.getDisplayValue() + 
+               ' for policy: ' + current.getValue('policy_number'));
+    }
+}
+
+export function createRenewalReminder(current, previous) {
+    // Create renewal reminder 30 days before policy expiry
+    if (!current.policy_end_date.nil()) {
+        var expiryDate = new GlideDateTime(current.getValue('policy_end_date'));
+        var reminderDate = new GlideDateTime(expiryDate);
+        reminderDate.addDaysLocalTime(-30); // 30 days before expiry
+        
+        var currentDate = new GlideDateTime();
+        
+        // Only create reminder if expiry is in the future and no reminder exists
+        if (expiryDate.compareTo(currentDate) > 0) {
+            var renewalGR = new GlideRecord('x_1945663_insuranc_u_renewal_data');
+            renewalGR.addQuery('client_reference', current.getUniqueValue());
+            renewalGR.addQuery('renewal_date', expiryDate.getDisplayValue());
+            renewalGR.query();
+            
+            if (!renewalGR.hasNext()) {
+                // Create renewal record
+                var newRenewal = new GlideRecord('x_1945663_insuranc_u_renewal_data');
+                newRenewal.initialize();
+                newRenewal.setValue('client_reference', current.getUniqueValue());
+                newRenewal.setValue('renewal_date', expiryDate.getDisplayValue());
+                newRenewal.setValue('previous_premium', current.getValue('premium_amount'));
+                newRenewal.setValue('new_premium', current.getValue('premium_amount'));
+                newRenewal.setValue('renewal_type', 'automatic');
+                newRenewal.setValue('renewal_status', 'pending');
+                newRenewal.setValue('renewal_period', 'annual');
+                newRenewal.setValue('agent_notes', 'Auto-generated renewal for policy: ' + current.getValue('policy_number'));
+                
+                var renewalSysId = newRenewal.insert();
+                
+                gs.info('Renewal record created for policy: ' + current.getValue('policy_number') + 
+                       ' with sys_id: ' + renewalSysId);
+            }
+        }
+    }
+}
+
+export function validatePolicyData(current, previous) {
+    // Validate policy data integrity
+    var isValid = true;
+    var errorMessages = [];
+    
+    // Check if policy number is unique
+    if (!current.policy_number.nil()) {
+        var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+        policyGR.addQuery('policy_number', current.getValue('policy_number'));
+        policyGR.addQuery('sys_id', '!=', current.getUniqueValue());
+        policyGR.query();
+        
+        if (policyGR.hasNext()) {
+            isValid = false;
+            errorMessages.push('Policy number must be unique. This policy number already exists.');
+        }
+    }
+    
+    // Validate email format
+    var email = current.getValue('contact_email');
+    if (!gs.nil(email)) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            isValid = false;
+            errorMessages.push('Please enter a valid email address.');
+        }
+    }
+    
+    // Validate policy dates
+    if (!current.policy_start_date.nil() && !current.policy_end_date.nil()) {
+        var startDate = new GlideDateTime(current.getValue('policy_start_date'));
+        var endDate = new GlideDateTime(current.getValue('policy_end_date'));
+        
+        if (endDate.compareTo(startDate) <= 0) {
+            isValid = false;
+            errorMessages.push('Policy end date must be after the start date.');
+        }
+    }
+    
+    // Validate premium amount
+    var premium = current.getValue('premium_amount');
+    if (!gs.nil(premium)) {
+        var premiumNum = parseFloat(premium);
+        if (isNaN(premiumNum) || premiumNum <= 0) {
+            isValid = false;
+            errorMessages.push('Premium amount must be a positive number.');
+        }
+    }
+    
+    if (!isValid) {
+        gs.addErrorMessage('Validation Error: ' + errorMessages.join(' '));
+        current.setAbortAction(true);
+    }
+    
+    return isValid;
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/business-rules/policy-automation.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_id>329dc13278e04e31a7b407d9ba3c9d80</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/business-rules/policy-automation.js</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_module_329dc13278e04e31a7b407d9ba3c9d80</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+    </sys_module>
+</record_update>

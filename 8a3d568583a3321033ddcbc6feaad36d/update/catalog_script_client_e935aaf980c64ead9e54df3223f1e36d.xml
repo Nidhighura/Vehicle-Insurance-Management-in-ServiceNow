@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="catalog_script_client">
+    <catalog_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_catalog>false</applies_catalog>
+        <applies_extended>false</applies_extended>
+        <applies_req_item>false</applies_req_item>
+        <applies_sc_task>false</applies_sc_task>
+        <applies_target_record>false</applies_target_record>
+        <applies_to>catalog_item</applies_to>
+        <cat_item display_value="Insurance Claim Submission">799a4acbe8cc4ec293c0bb03f0ea71a6</cat_item>
+        <cat_variable/>
+        <condition/>
+        <description/>
+        <field/>
+        <global>false</global>
+        <isolate_script>false</isolate_script>
+        <messages/>
+        <name>Claims Policy Number Validation</name>
+        <order/>
+        <published_ref/>
+        <script><![CDATA[
+function onSubmit() {
+    var policyNumber = g_form.getValue('policy_number');
+    
+    if (!policyNumber || policyNumber.length === 0) {
+        g_form.addErrorMessage('Policy number is required');
+        return false;
+    }
+    
+    // Basic policy number format validation
+    if (policyNumber.length < 5) {
+        g_form.addErrorMessage('Policy number must be at least 5 characters long');
+        return false;
+    }
+    
+    return true;
+}
+        ]]></script>
+        <sys_class_name>catalog_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:11:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e935aaf980c64ead9e54df3223f1e36d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claims Policy Number Validation</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>catalog_script_client_e935aaf980c64ead9e54df3223f1e36d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:11:52</sys_updated_on>
+        <table/>
+        <type>onSubmit</type>
+        <ui_type/>
+        <va_supported>true</va_supported>
+        <variable_set/>
+        <view/>
+    </catalog_script_client>
+</record_update>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[var InsuranceNotificationUtils = Class.create();
+InsuranceNotificationUtils.prototype = {
+    initialize: function() {},
+    
+    sendPolicyExpiryNotification: function(policyRecord) {
+        // Send notification for policy expiry
+        var clientName = policyRecord.getValue('client_name');
+        var policyNumber = policyRecord.getValue('policy_number');
+        var expiryDate = policyRecord.getValue('policy_end_date');
+        var contactEmail = policyRecord.getValue('contact_email');
+        
+        if (!gs.nil(contactEmail)) {
+            gs.eventQueue('insurance.policy.expiry.reminder', policyRecord, 
+                         clientName, policyNumber, expiryDate, contactEmail);
+            
+            gs.info('Policy expiry notification queued for: ' + clientName + 
+                   ' (Policy: ' + policyNumber + ')');
+        }
+    },
+    
+    sendRenewalNotification: function(renewalRecord) {
+        // Send notification for renewal updates
+        var clientRef = renewalRecord.getValue('client_reference');
+        var renewalStatus = renewalRecord.getValue('renewal_status');
+        
+        if (!gs.nil(clientRef)) {
+            var clientGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+            if (clientGR.get(clientRef)) {
+                var clientName = clientGR.getValue('client_name');
+                var contactEmail = clientGR.getValue('contact_email');
+                
+                if (!gs.nil(contactEmail)) {
+                    gs.eventQueue('insurance.renewal.status.update', renewalRecord,
+                                 clientName, renewalStatus, contactEmail);
+                    
+                    gs.info('Renewal notification sent to: ' + clientName + 
+                           ' for status: ' + renewalStatus);
+                }
+            }
+        }
+    },
+    
+    sendClaimsNotification: function(claimsRecord, statusChange) {
+        // Send notification for claims updates
+        var clientRef = claimsRecord.getValue('client_reference');
+        var claimNumber = claimsRecord.getValue('claim_number');
+        var claimStatus = claimsRecord.getValue('claim_status');
+        
+        if (!gs.nil(clientRef)) {
+            var clientGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+            if (clientGR.get(clientRef)) {
+                var clientName = clientGR.getValue('client_name');
+                var contactEmail = clientGR.getValue('contact_email');
+                
+                if (!gs.nil(contactEmail)) {
+                    gs.eventQueue('insurance.claim.status.update', claimsRecord,
+                                 clientName, claimNumber, claimStatus, contactEmail);
+                    
+                    gs.info('Claim notification sent to: ' + clientName + 
+                           ' for claim: ' + claimNumber + ' - Status: ' + claimStatus);
+                }
+            }
+        }
+    },
+    
+    type: 'InsuranceNotificationUtils'
+};]]></content>
+        <external_source>false</external_source>
+        <path>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/script-includes/insurance-notification-utils.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_id>6634df002ff446e69478a978b919b0b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/script-includes/insurance-notification-utils.js</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_module_6634df002ff446e69478a978b919b0b6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+    </sys_module>
+</record_update>

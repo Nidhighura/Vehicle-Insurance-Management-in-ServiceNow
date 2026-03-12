@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description>Allows customers to read only their own renewal records</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_1945663_insuranc_u_renewal_data</name>
+        <operation display_value="read">read</operation>
+        <script><![CDATA[
+        // Customers can only view renewals for their policies
+        var clientRef = current.getValue('client_reference');
+        if (clientRef) {
+            var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+            if (policyGR.get(clientRef)) {
+                var userEmail = gs.getUser().getEmail();
+                var answer = (policyGR.getValue('contact_email') == userEmail);
+            }
+        } else {
+            var answer = false;
+        }
+    ]]></script>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:16</sys_created_on>
+        <sys_id>3d09a25f6a47436f951f7aafad2f6336</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc_u_renewal_data</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_security_acl_3d09a25f6a47436f951f7aafad2f6336</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:16</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_1945663_insuranc.claims_adjuster" name="x_1945663_insuranc.claims_adjuster">8cb54338c380473bbcae36770ee82e7b</contains>
+        <role display_value="x_1945663_insuranc.insurance_manager" name="x_1945663_insuranc.insurance_manager">95c9e02fd8d74dad93c03a9c88821fad</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:19</sys_created_on>
+        <sys_id>59a9f5bf9f1647338b32f39b062ecfa7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc.claims_adjuster.x_1945663_insuranc.insurance_manager</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_user_role_contains_59a9f5bf9f1647338b32f39b062ecfa7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:19</sys_updated_on>
+    </sys_user_role_contains>
+</record_update>

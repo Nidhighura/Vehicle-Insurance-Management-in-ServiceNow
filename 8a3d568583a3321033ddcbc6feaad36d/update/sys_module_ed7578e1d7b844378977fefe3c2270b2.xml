@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[import { gs, GlideRecord } from '@servicenow/glide'
+
+export function generatePolicyLink(policyId) {
+    // Generate dynamic link to policy record
+    var baseURL = gs.getProperty('glide.servlet.uri');
+    var policyLink = baseURL + 'x_1945663_insuranc_u_insurance_clients_data.do?sys_id=' + policyId;
+    
+    return '<a href="' + policyLink + '" target="_blank">View Your Policy</a>';
+}
+
+export function generateClaimLink(claimId) {
+    // Generate dynamic link to claim record
+    var baseURL = gs.getProperty('glide.servlet.uri');
+    var claimLink = baseURL + 'x_1945663_insuranc_u_claims_data.do?sys_id=' + claimId;
+    
+    return '<a href="' + claimLink + '" target="_blank">View Your Claim</a>';
+}
+
+export function generateRenewalLink(renewalId) {
+    // Generate dynamic link to renewal record
+    var baseURL = gs.getProperty('glide.servlet.uri');
+    var renewalLink = baseURL + 'x_1945663_insuranc_u_renewal_data.do?sys_id=' + renewalId;
+    
+    return '<a href="' + renewalLink + '" target="_blank">View Your Renewal</a>';
+}
+
+export function generatePortalLink() {
+    // Generate link to Service Portal
+    var baseURL = gs.getProperty('glide.servlet.uri');
+    var portalLink = baseURL + 'sp?id=catalog&sys_id=e0d08b13c3330100c8b837659bba8fb4';
+    
+    return '<a href="' + portalLink + '" target="_blank">Access Insurance Portal</a>';
+}
+
+export function formatPolicyExpiryEmail(policyRecord) {
+    // Format policy expiry reminder email
+    var clientName = policyRecord.getValue('client_name');
+    var policyNumber = policyRecord.getValue('policy_number');
+    var expiryDate = policyRecord.getValue('policy_end_date');
+    var policyType = policyRecord.getValue('policy_type');
+    var policyLink = generatePolicyLink(policyRecord.getUniqueValue());
+    var portalLink = generatePortalLink();
+    
+    var emailBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background-color: #1f4e79; color: white; padding: 20px; text-align: center;">
+            <h2>Policy Expiry Reminder</h2>
+        </div>
+        
+        <div style="padding: 20px; background-color: #f8f9fa;">
+            <p>Dear ${clientName},</p>
+            
+            <p>This is a friendly reminder that your <strong>${policyType}</strong> insurance policy is approaching its expiry date.</p>
+            
+            <div style="background-color: #e7f3ff; border-left: 4px solid #0066cc; padding: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">Policy Details:</h3>
+                <ul>
+                    <li><strong>Policy Number:</strong> ${policyNumber}</li>
+                    <li><strong>Policy Type:</strong> ${policyType}</li>
+                    <li><strong>Expiry Date:</strong> ${expiryDate}</li>
+                </ul>
+            </div>
+            
+            <p><strong>Action Required:</strong></p>
+            <p>To avoid any gap in your coverage, please contact us or use our online renewal service.</p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                ${policyLink}
+                <br><br>
+                ${portalLink}
+            </div>
+            
+            <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 20px 0;">
+                <p><strong>Need Help?</strong></p>
+                <p>Contact our customer service team at:</p>
+                <ul>
+                    <li>Phone: 1-800-INSURANCE</li>
+                    <li>Email: support@insuranceco.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="background-color: #6c757d; color: white; padding: 15px; text-align: center; font-size: 12px;">
+            <p>This is an automated reminder. Please do not reply to this email.</p>
+        </div>
+    </div>`;
+    
+    return emailBody;
+}
+
+export function formatClaimStatusEmail(claimRecord, status) {
+    // Format claim status update email
+    var clientRef = claimRecord.getValue('client_reference');
+    var clientName = '';
+    
+    if (clientRef) {
+        var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+        if (policyGR.get(clientRef)) {
+            clientName = policyGR.getValue('client_name');
+        }
+    }
+    
+    var claimNumber = claimRecord.getValue('claim_number');
+    var claimAmount = claimRecord.getValue('claim_amount');
+    var claimLink = generateClaimLink(claimRecord.getUniqueValue());
+    var portalLink = generatePortalLink();
+    
+    var statusMessage = '';
+    var statusColor = '#17a2b8';
+    
+    switch (status) {
+        case 'approved':
+            statusMessage = 'Great news! Your claim has been approved.';
+            statusColor = '#28a745';
+            break;
+        case 'rejected':
+            statusMessage = 'We regret to inform you that your claim has been rejected.';
+            statusColor = '#dc3545';
+            break;
+        case 'paid':
+            statusMessage = 'Your claim payment has been processed.';
+            statusColor = '#28a745';
+            break;
+        case 'under_review':
+            statusMessage = 'Your claim is currently under review.';
+            statusColor = '#ffc107';
+            break;
+        default:
+            statusMessage = 'Your claim status has been updated.';
+    }
+    
+    var emailBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background-color: ${statusColor}; color: white; padding: 20px; text-align: center;">
+            <h2>Claim Status Update</h2>
+        </div>
+        
+        <div style="padding: 20px; background-color: #f8f9fa;">
+            <p>Dear ${clientName},</p>
+            
+            <div style="background-color: #e7f3ff; border-left: 4px solid #0066cc; padding: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: ${statusColor};">${statusMessage}</h3>
+            </div>
+            
+            <div style="background-color: white; border: 1px solid #dee2e6; padding: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">Claim Details:</h3>
+                <ul>
+                    <li><strong>Claim Number:</strong> ${claimNumber}</li>
+                    <li><strong>Claim Amount:</strong> $${claimAmount}</li>
+                    <li><strong>Status:</strong> ${status}</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                ${claimLink}
+                <br><br>
+                ${portalLink}
+            </div>
+        </div>
+        
+        <div style="background-color: #6c757d; color: white; padding: 15px; text-align: center; font-size: 12px;">
+            <p>This is an automated notification. Please do not reply to this email.</p>
+        </div>
+    </div>`;
+    
+    return emailBody;
+}
+
+export function formatRenewalEmail(renewalRecord, status) {
+    // Format renewal status email
+    var clientRef = renewalRecord.getValue('client_reference');
+    var clientName = '';
+    
+    if (clientRef) {
+        var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+        if (policyGR.get(clientRef)) {
+            clientName = policyGR.getValue('client_name');
+        }
+    }
+    
+    var renewalDate = renewalRecord.getValue('renewal_date');
+    var newPremium = renewalRecord.getValue('new_premium');
+    var renewalLink = generateRenewalLink(renewalRecord.getUniqueValue());
+    var portalLink = generatePortalLink();
+    
+    var emailBody = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background-color: #1f4e79; color: white; padding: 20px; text-align: center;">
+            <h2>Policy Renewal Update</h2>
+        </div>
+        
+        <div style="padding: 20px; background-color: #f8f9fa;">
+            <p>Dear ${clientName},</p>
+            
+            <p>Your policy renewal status has been updated to: <strong>${status}</strong></p>
+            
+            <div style="background-color: white; border: 1px solid #dee2e6; padding: 15px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">Renewal Details:</h3>
+                <ul>
+                    <li><strong>Renewal Date:</strong> ${renewalDate}</li>
+                    <li><strong>New Premium:</strong> $${newPremium}</li>
+                    <li><strong>Status:</strong> ${status}</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                ${renewalLink}
+                <br><br>
+                ${portalLink}
+            </div>
+        </div>
+        
+        <div style="background-color: #6c757d; color: white; padding: 15px; text-align: center; font-size: 12px;">
+            <p>This is an automated notification. Please do not reply to this email.</p>
+        </div>
+    </div>`;
+    
+    return emailBody;
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/notifications/email-templates.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:15</sys_created_on>
+        <sys_id>ed7578e1d7b844378977fefe3c2270b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/src/server/notifications/email-templates.js</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_module_ed7578e1d7b844378977fefe3c2270b2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:15</sys_updated_on>
+    </sys_module>
+</record_update>

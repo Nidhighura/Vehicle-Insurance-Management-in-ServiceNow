@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1945663_insuranc_u_claims_data</collection>
+        <condition/>
+        <description>Automatically creates approval requests for high-value claims over $10,000</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Claims Approval Request Creation</name>
+        <order>150</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[
+        var claimAmount = parseFloat(current.getValue('claim_amount') || 0);
+        var claimStatus = current.getValue('claim_status');
+        
+        // Create approval request for high-value claims (over $10,000)
+        if (claimAmount > 10000 && claimStatus == 'under_review') {
+            var approvalGR = new GlideRecord('sysapproval_approver');
+            approvalGR.addQuery('document_id', current.getUniqueValue());
+            approvalGR.addQuery('source_table', 'x_1945663_insuranc_u_claims_data');
+            approvalGR.query();
+            
+            if (!approvalGR.hasNext()) {
+                // Create new approval request
+                var newApproval = new GlideRecord('sysapproval_approver');
+                newApproval.initialize();
+                newApproval.setValue('document_id', current.getUniqueValue());
+                newApproval.setValue('source_table', 'x_1945663_insuranc_u_claims_data');
+                newApproval.setValue('approver', current.getValue('adjuster_assigned'));
+                newApproval.setValue('state', 'requested');
+                newApproval.setValue('comments', 'Auto-generated approval request for high-value claim: $' + claimAmount);
+                
+                var approvalSysId = newApproval.insert();
+                
+                gs.addInfoMessage('Approval request created for high-value claim: ' + 
+                                current.getValue('claim_number') + ' (Amount: $' + claimAmount + ')');
+            }
+        }
+    ]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a1e64b96d3b74818913c6aa9ee2903f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Claims Approval Request Creation</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_script_a1e64b96d3b74818913c6aa9ee2903f3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=a1e64b96d3b74818913c6aa9ee2903f3"/>
+</record_update>

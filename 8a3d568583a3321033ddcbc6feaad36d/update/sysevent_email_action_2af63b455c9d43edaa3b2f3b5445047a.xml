@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>false</action_insert>
+        <action_update>false</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Insurance Notifications" name="Insurance Notifications">9dca14ac71ed406fb07fb84200269ea4</category>
+        <collection>x_1945663_insuranc_u_insurance_clients_data</collection>
+        <condition/>
+        <content_type/>
+        <default_digest>false</default_digest>
+        <default_interval/>
+        <description/>
+        <digest_from/>
+        <digest_html/>
+        <digest_reply_to/>
+        <digest_separator_html/>
+        <digest_separator_text/>
+        <digest_subject/>
+        <digest_template/>
+        <digest_text/>
+        <digest_type/>
+        <digestable>false</digestable>
+        <enable_dynamic_translation>false</enable_dynamic_translation>
+        <event_name>insurance.policy.expiry.reminder</event_name>
+        <event_parm_1>false</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from>noreply@insuranceco.com</from>
+        <generation_type/>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item/>
+        <item_table/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #1f4e79; color: white; padding: 20px; text-align: center;">
+        <h2>]]>🚨<![CDATA[ Policy Expiry Reminder</h2>
+    </div>
+    
+    <div style="padding: 20px; background-color: #f8f9fa;">
+        <p>Dear ${event.parm_1},</p>
+        
+        <p>This is a friendly reminder that your insurance policy is approaching its expiry date.</p>
+        
+        <div style="background-color: #e7f3ff; border-left: 4px solid #0066cc; padding: 15px; margin: 20px 0;">
+            <h3 style="margin-top: 0;">⚠️ Policy Details:</h3>
+            <ul>
+                <li><strong>Policy Number:</strong> ${event.parm_2}</li>
+                <li><strong>Expiry Date:</strong> ${event.parm_3}</li>
+                <li><strong>Days Remaining:</strong> Less than 30 days</li>
+            </ul>
+        </div>
+        
+        <p><strong>]]>🎯<![CDATA[ Action Required:</strong></p>
+        <p>To avoid any gap in your coverage, please contact us or use our online renewal service.</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="${gs.getProperty('glide.servlet.uri')}sp?id=catalog&sys_id=e0d08b13c3330100c8b837659bba8fb4" 
+               target="_blank" 
+               style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;">
+                ]]>🔗<![CDATA[ Access Insurance Portal
+            </a>
+        </div>
+        
+        <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 20px 0;">
+            <p><strong>]]>📞<![CDATA[ Need Help?</strong></p>
+            <p>Contact our customer service team at:</p>
+            <ul>
+                <li>]]>📱<![CDATA[ Phone: 1-800-INSURANCE</li>
+                <li>]]>📧<![CDATA[ Email: support@insuranceco.com</li>
+                <li>⏰ Hours: Monday - Friday, 8 AM - 8 PM</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div style="background-color: #6c757d; color: white; padding: 15px; text-align: center; font-size: 12px;">
+        <p>This is an automated reminder. Please do not reply to this email.</p>
+        <p>© 2024 Insurance Company. All rights reserved.</p>
+    </div>
+</div>]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name/>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields/>
+        <recipient_groups/>
+        <recipient_users/>
+        <reply_to>support@insuranceco.com</reply_to>
+        <send_self>false</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>Policy Expiry Reminder - Action Required</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2af63b455c9d43edaa3b2f3b5445047a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sysevent_email_action_2af63b455c9d43edaa3b2f3b5445047a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:19</sys_updated_on>
+        <sys_version/>
+        <template/>
+        <type/>
+        <weight>0</weight>
+    </sysevent_email_action>
+</record_update>

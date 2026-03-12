@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_run_end/>
+        <entered_run_start/>
+        <entered_time/>
+        <max_drift/>
+        <name>Weekly Renewal Processing</name>
+        <offset/>
+        <offset_type/>
+        <repeat_every/>
+        <run_as/>
+        <run_as_tz>US/Eastern</run_as_tz>
+        <run_dayofmonth/>
+        <run_dayofweek>2</run_dayofweek>
+        <run_daysofweek/>
+        <run_end/>
+        <run_month/>
+        <run_period/>
+        <run_start/>
+        <run_time>2026-03-09 07:44:19</run_time>
+        <run_type>weekly</run_type>
+        <run_weekinmonth/>
+        <script><![CDATA[import { gs, GlideRecord, GlideDateTime } from '@servicenow/glide'
+
+export function checkExpiringPolicies() {
+    // Check for policies expiring in the next 30 days
+    var gr = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+    
+    // Create date range for next 30 days
+    var now = new GlideDateTime();
+    var thirtyDaysFromNow = new GlideDateTime(now);
+    thirtyDaysFromNow.addDaysLocalTime(30);
+    
+    // Query for active policies expiring in next 30 days
+    gr.addQuery('status', 'active');
+    gr.addQuery('policy_end_date', '>=', now.getDisplayValue());
+    gr.addQuery('policy_end_date', '<=', thirtyDaysFromNow.getDisplayValue());
+    gr.query();
+    
+    var count = 0;
+    while (gr.next()) {
+        // Fire event for each expiring policy
+        gs.eventQueue('insurance.policy.expiry.reminder', gr,
+                     gr.getValue('client_name'),
+                     gr.getValue('policy_number'),
+                     gr.getValue('policy_end_date'),
+                     gr.getValue('contact_email'));
+        count++;
+    }
+    
+    gs.info('Policy expiry reminders sent for ' + count + ' policies');
+    return count;
+}
+
+export function processOverdueRenewals() {
+    // Process renewal records that are overdue
+    var gr = new GlideRecord('x_1945663_insuranc_u_renewal_data');
+    
+    var now = new GlideDateTime();
+    
+    // Query for pending renewals past their renewal date
+    gr.addQuery('renewal_status', 'pending');
+    gr.addQuery('renewal_date', '<', now.getDisplayValue());
+    gr.query();
+    
+    var count = 0;
+    while (gr.next()) {
+        // Mark as overdue and send reminder
+        gr.setValue('renewal_status', 'overdue');
+        gr.setValue('agent_notes', 
+                   (gr.getValue('agent_notes') || '') + 
+                   '\n[' + now.getDisplayValue() + '] Renewal marked as overdue by scheduled job.');
+        gr.update();
+        
+        // Send overdue notification
+        var clientRef = gr.getValue('client_reference');
+        if (clientRef) {
+            var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+            if (policyGR.get(clientRef)) {
+                gs.eventQueue('insurance.renewal.status.update', gr,
+                             policyGR.getValue('client_name'),
+                             'overdue',
+                             policyGR.getValue('contact_email'));
+            }
+        }
+        count++;
+    }
+    
+    gs.info('Processed ' + count + ' overdue renewals');
+    return count;
+}
+
+export function cleanupClosedClaims() {
+    // Archive claims that have been closed for more than 90 days
+    var gr = new GlideRecord('x_1945663_insuranc_u_claims_data');
+    
+    var ninetyDaysAgo = new GlideDateTime();
+    ninetyDaysAgo.addDaysLocalTime(-90);
+    
+    // Query for closed claims older than 90 days
+    gr.addQuery('claim_status', 'closed');
+    gr.addQuery('settlement_date', '<', ninetyDaysAgo.getDisplayValue());
+    gr.query();
+    
+    var count = 0;
+    while (gr.next()) {
+        // Add archival note
+        var currentNotes = gr.getValue('notes') || '';
+        var archiveNote = '\n[' + new GlideDateTime().getDisplayValue() + '] Claim archived by scheduled job after 90 days closure period.';
+        gr.setValue('notes', currentNotes + archiveNote);
+        gr.update();
+        count++;
+    }
+    
+    gs.info('Archived ' + count + ' closed claims');
+    return count;
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:19</sys_created_on>
+        <sys_id>f7bbb2572bd84f1ab55d018958eedb54</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Weekly Renewal Processing</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sysauto_script_f7bbb2572bd84f1ab55d018958eedb54</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:19</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

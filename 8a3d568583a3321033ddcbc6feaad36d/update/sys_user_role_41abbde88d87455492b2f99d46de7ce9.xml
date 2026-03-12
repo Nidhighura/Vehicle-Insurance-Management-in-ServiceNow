@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>false</can_delegate>
+        <description>Role for insurance customers to view their own policies, claims, and renewals</description>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id>8lDHN1SMJXR03u9AsmCKeX5F2K60nfKqWhGhRj/6hpc=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1945663_insuranc.insurance_customer</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>insurance_customer</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 07:44:18</sys_created_on>
+        <sys_id>41abbde88d87455492b2f99d46de7ce9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc.insurance_customer</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_user_role_41abbde88d87455492b2f99d46de7ce9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 07:44:18</sys_updated_on>
+    </sys_user_role>
+</record_update>

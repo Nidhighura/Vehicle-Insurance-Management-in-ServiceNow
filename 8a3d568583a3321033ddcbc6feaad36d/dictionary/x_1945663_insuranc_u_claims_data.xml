@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="493f968983a3321033ddcbc6feaad3b0" label="Claims Data" max_length="40" name="x_1945663_insuranc_u_claims_data" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Claim Type" max_length="40" name="claim_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Water Damage" sequence="3" value="water"/>
+                <element inactive_on_update="false" label="Other" sequence="6" value="other"/>
+                <element inactive_on_update="false" label="Fire Damage" sequence="2" value="fire"/>
+                <element inactive_on_update="false" label="Theft" sequence="1" value="theft"/>
+                <element inactive_on_update="false" label="Medical" sequence="5" value="medical"/>
+                <element inactive_on_update="false" label="Weather Related" sequence="4" value="weather"/>
+                <element inactive_on_update="false" label="Accident" sequence="0" value="accident"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Description" mandatory="true" max_length="1000" name="description" type="string"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Claim Number" mandatory="true" max_length="50" name="claim_number" type="string"/>
+        <element label="Claim Amount" mandatory="true" max_length="20" name="claim_amount" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" label="Adjuster Assigned" max_length="100" name="adjuster_assigned" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Incident Date" mandatory="true" max_length="40" name="incident_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Settlement Date" max_length="40" name="settlement_date" type="glide_date_time"/>
+        <element attributes="encode_utf8=false" label="Client Reference" mandatory="true" max_length="32" name="client_reference" reference="x_1945663_insuranc_u_insurance_clients_data" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Reported Date" mandatory="true" max_length="40" name="reported_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Internal Notes" max_length="2000" name="notes" type="string"/>
+        <element label="Approved Amount" max_length="20" name="approved_amount" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="submitted" label="Claim Status" max_length="40" name="claim_status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Paid" sequence="4" value="paid"/>
+                <element inactive_on_update="false" label="Submitted" sequence="0" value="submitted"/>
+                <element inactive_on_update="false" label="Rejected" sequence="3" value="rejected"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+                <element inactive_on_update="false" label="Closed" sequence="5" value="closed"/>
+                <element inactive_on_update="false" label="Under Review" sequence="1" value="under_review"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="client_reference"/>
+        </index>
+    </element>
+</database>

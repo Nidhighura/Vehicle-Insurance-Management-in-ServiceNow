@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[{
+  "name": "x-1945663-insurance-ma",
+  "version": "1.0.0",
+  "description": "[BUILD AGENT GENERATED]:  A ServiceNow application for managing insurance client data, renewals, claims, and approval workflows",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "now-sdk build",
+    "deploy": "now-sdk install",
+    "transform": "now-sdk transform",
+    "types": "now-sdk dependencies"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.3.0",
+    "@servicenow/glide": "26.0.1",
+    "eslint": "8.50.0",
+    "@servicenow/eslint-plugin-sdk-app-plugin": "4.3.0"
+  }
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/package.json</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:50:26</sys_created_on>
+        <sys_id>a742cbb2834e47df9c2c8939cfe00ac3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1945663_insuranc/x-1945663-insurance-ma/1.0.0/package.json</sys_name>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_module_a742cbb2834e47df9c2c8939cfe00ac3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:50:26</sys_updated_on>
+    </sys_module>
+</record_update>

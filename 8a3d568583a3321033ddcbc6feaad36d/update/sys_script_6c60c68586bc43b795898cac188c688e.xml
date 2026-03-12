@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1945663_insuranc_u_renewal_data</collection>
+        <condition/>
+        <description>Sends notifications for renewal status changes and updates policy records</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Renewal Status Notifications</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[
+        var notificationUtil = new InsuranceNotificationUtils();
+        
+        // Send notifications for renewal status changes
+        if (current.renewal_status.changes() || current.isNewRecord()) {
+            var status = current.getValue('renewal_status');
+            var clientRef = current.getValue('client_reference');
+            
+            // Send notification to client
+            notificationUtil.sendRenewalNotification(current);
+            
+            // Add info message for different statuses
+            switch (status) {
+                case 'approved':
+                    gs.addInfoMessage('Renewal approved and client notified.');
+                    break;
+                case 'rejected':
+                    gs.addInfoMessage('Renewal rejected. Client notification sent.');
+                    break;
+                case 'processed':
+                    gs.addInfoMessage('Renewal processing complete.');
+                    // Auto-update the original policy record
+                    if (!gs.nil(clientRef)) {
+                        var policyGR = new GlideRecord('x_1945663_insuranc_u_insurance_clients_data');
+                        if (policyGR.get(clientRef)) {
+                            policyGR.setValue('premium_amount', current.getValue('new_premium'));
+                            var newStartDate = current.getValue('renewal_date');
+                            policyGR.setValue('policy_start_date', newStartDate);
+                            // Policy end date will be recalculated by the policy business rule
+                            policyGR.setValue('policy_end_date', '');
+                            policyGR.update();
+                            
+                            gs.addInfoMessage('Policy updated with new renewal terms.');
+                        }
+                    }
+                    break;
+            }
+        }
+        
+        // Set notification sent flag
+        if (!current.notification_sent && current.getValue('renewal_status') != 'pending') {
+            current.setValue('notification_sent', true);
+        }
+    ]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-09 06:57:56</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>6c60c68586bc43b795898cac188c688e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Renewal Status Notifications</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="VIM" source="x_1945663_insuranc">8a3d568583a3321033ddcbc6feaad36d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="VIM">8a3d568583a3321033ddcbc6feaad36d</sys_scope>
+        <sys_update_name>sys_script_6c60c68586bc43b795898cac188c688e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-09 06:57:56</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=6c60c68586bc43b795898cac188c688e"/>
+</record_update>

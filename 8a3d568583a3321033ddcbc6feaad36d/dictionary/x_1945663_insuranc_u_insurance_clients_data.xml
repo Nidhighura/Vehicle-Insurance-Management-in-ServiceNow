@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e93fd68983a3321033ddcbc6feaad3aa" label="Insurance clients Data" max_length="40" name="x_1945663_insuranc_u_insurance_clients_data" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Policy Number" mandatory="true" max_length="50" name="policy_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Policy Start Date" mandatory="true" max_length="40" name="policy_start_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Contact Email" max_length="100" name="contact_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Policy End Date" mandatory="true" max_length="40" name="policy_end_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Contact Phone" max_length="20" name="contact_phone" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Premium Amount" max_length="20" name="premium_amount" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="active" label="Status" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+                <element inactive_on_update="false" label="Suspended" sequence="2" value="suspended"/>
+                <element inactive_on_update="false" label="Inactive" sequence="1" value="inactive"/>
+                <element inactive_on_update="false" label="Active" sequence="0" value="active"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Client Name" mandatory="true" max_length="100" name="client_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Policy Type" max_length="40" name="policy_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Home Insurance" sequence="1" value="home"/>
+                <element inactive_on_update="false" label="Health Insurance" sequence="3" value="health"/>
+                <element inactive_on_update="false" label="Life Insurance" sequence="2" value="life"/>
+                <element inactive_on_update="false" label="Auto Insurance" sequence="0" value="auto"/>
+                <element inactive_on_update="false" label="Business Insurance" sequence="4" value="business"/>
+            </choice>
+        </element>
+    </element>
+</database>
